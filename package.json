@@ -18,8 +18,10 @@
   },
   "homepage": "https://github.com/logic-fabric/LoicMangin_7_27022021#readme",
   "devDependencies": {
+    "bootstrap": "^5.0.0-beta2",
     "gulp": "^4.0.2",
     "gulp-sass": "^4.1.0",
     "node-sass": "^5.0.0"
-  }
+  },
+  "dependencies": {}
 }
