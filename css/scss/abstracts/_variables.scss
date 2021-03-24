@@ -21,12 +21,13 @@ $grid-8: $grid-1 * 8;
 
 $primary: #d04f4f;
 
-$info-500: #68d9a4;
-$success-500: #3282f7;
+$info-500: #3282f7;
+$success-500: #68d9a4;
 $danger-500: #ed6454;
 
 $neutral-200: #e7e7e7;
 $neutral-400: #c7bebe;
+$neutral-600: #a79c9c;
 $neutral-900: #353535;
 
 // ==========
@@ -41,7 +42,9 @@ $heading-font: $txt-font;
 // =======================
 
 $txt-size: 1rem;
+
 $sm-size: 0.9 * $txt-size;
+
 $h6-size: 1.1 * $txt-size;
 $h5-size: 1.1 * $h6-size;
 $h4-size: 1.1 * $h5-size;
@@ -53,4 +56,4 @@ $h1-size: 1.1 * $h2-size;
 // BREAKPOINTS AND CONTAINERS MAX-WIDTH
 // ====================================
 
-$large-container-width: 1280px;
+$large-container-width: 1340px;

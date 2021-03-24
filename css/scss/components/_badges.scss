@@ -1,0 +1,12 @@
+.badge {
+  width: max-content;
+  margin: $grid-2 $grid-2 $grid-2 0;
+  padding: $grid-1 $grid-2;
+  border-radius: $grid-sm;
+
+  cursor: pointer;
+
+  i {
+    margin-left: $grid-1;
+  }
+}

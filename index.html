@@ -45,13 +45,53 @@
   <body>
     <header class="txt-center">
       <img
-        class="mt-2 mb-1"
+        class="mt-2"
         src="img/logo-les-petits-plats.png"
         alt="Logo Les petits plats"
         height="96"
       />
     </header>
 
-    <main></main>
+    <main>
+      <form class="search-bar mh-2" action="">
+        <input
+          class="txt-h5"
+          type="text"
+          placeholder="Rechercher un ingrédient, appareil, ustensile ou une recette"
+        />
+        <button type="button">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+
+      <div class="badges-wrapper">
+        <div class="badge bgtxt-info">
+          <span>Coco</span>
+          <i class="far fa-times-circle"></i>
+        </div>
+
+        <div class="badge bgtxt-success">
+          <span>Blender</span>
+          <i class="far fa-times-circle"></i>
+        </div>
+      </div>
+
+      <div class="filters-wrapper">
+        <div class="select-filter txt-h5 bgtxt-info">
+          <span>Ingrédients</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+
+        <div class="select-filter txt-h5 bgtxt-success">
+          <span>Appareil</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+
+        <div class="select-filter txt-h5 bgtxt-danger">
+          <span>Ustensiles</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+      </div>
+    </main>
   </body>
 </html>

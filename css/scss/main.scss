@@ -8,6 +8,8 @@
 @import "abstracts/mixins";
 
 // 3. Base stuff:
+@import "base/colors";
+@import "base/display";
 @import "base/spacings";
 @import "base/typography";
 @import "base/tags";
@@ -15,7 +17,9 @@
 // 4. Layout-related sections:
 
 // 5. Components:;
+@import "components/badges";
 
 // 6. Pages specific styles:
+@import "pages/home";
 
 // 7. Themes:

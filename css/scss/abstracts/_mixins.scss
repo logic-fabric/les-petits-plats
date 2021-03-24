@@ -6,4 +6,5 @@
 @mixin large-wrapper {
   max-width: $large-container-width;
   margin: auto;
+  padding: 0 $grid-4;
 }
