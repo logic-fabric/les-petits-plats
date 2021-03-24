@@ -1,4 +1,6 @@
-const RECIPES = [
+"use strict";
+
+export const RECIPES = [
   {
     id: 1,
     name: "Limonade de Coco",
