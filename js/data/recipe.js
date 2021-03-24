@@ -27,6 +27,63 @@ export class RecipesList {
     this.recipes = recipes;
   }
 
+  _collectAppliances() {
+    const appliances = new Set();
+
+    for (let recipe of this.recipes) {
+      appliances.add(
+        recipe.appliance[0].toUpperCase() + recipe.appliance.slice(1)
+      );
+    }
+
+    return [...appliances];
+  }
+
+  _collectIngredients() {
+    const ingredients = new Set();
+
+    for (let recipe of this.recipes) {
+      for (let ingredient of recipe.ingredients) {
+        ingredients.add(
+          ingredient.ingredient[0].toUpperCase() +
+            ingredient.ingredient.slice(1)
+        );
+      }
+    }
+
+    return [...ingredients];
+  }
+
+  _collectUstensils() {
+    const ustensils = new Set();
+
+    for (let recipe of this.recipes) {
+      for (let ustensil of recipe.ustensils) {
+        ustensils.add(ustensil.toUpperCase()[0] + ustensil.slice(1));
+      }
+    }
+
+    return [...ustensils];
+  }
+
+  get sortedAppliances() {
+    const appliances = this._collectAppliances();
+
+    return appliances.sort();
+  }
+
+  get sortedIngredients() {
+    const ingredients = this._collectIngredients();
+
+    return ingredients.sort();
+  }
+
+  get sortedUstensils() {
+    const ustensils = this._collectUstensils();
+
+    return ustensils.sort();
+  }
+
   sortByName() {
     return this.recipes.sort((r1, r2) => {
       const name1 = r1.name.toLowerCase();
