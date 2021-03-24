@@ -1,0 +1,35 @@
+.card {
+  border-radius: $grid-sm;
+  overflow: hidden;
+
+  margin: 0 0 $grid-6 0;
+}
+
+.card__img {
+  height: 10rem;
+
+  background: $neutral-400;
+}
+
+.card__body {
+  height: 14rem;
+  padding: $grid-2 $grid-3;
+
+  background: $neutral-200;
+
+  .card__title {
+    display: flex;
+    justify-content: space-between;
+
+    margin: 0 0 $grid-2 0;
+
+    font-size: $h5-size;
+  }
+
+  p {
+    margin: $grid-xs 0;
+
+    font-size: $sm-size;
+    text-overflow: ellipsis;
+  }
+}

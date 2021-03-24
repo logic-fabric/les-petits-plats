@@ -56,4 +56,9 @@ $h1-size: 1.1 * $h2-size;
 // BREAKPOINTS AND CONTAINERS MAX-WIDTH
 // ====================================
 
+$small-breakpoint: 840px;
+$medium-breakpoint: 1200px;
+
+$small-container-width: 480px;
+$medium-container-width: 1024px;
 $large-container-width: 1340px;

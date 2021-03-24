@@ -56,5 +56,13 @@ h6 {
 footer,
 header,
 main {
-  @include large-wrapper;
+  @include small-wrapper;
+
+  @media (min-width: $small-breakpoint) {
+    @include medium-wrapper;
+  }
+
+  @media (min-width: $medium-breakpoint) {
+    @include large-wrapper;
+  }
 }
