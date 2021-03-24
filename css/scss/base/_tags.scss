@@ -1,0 +1,60 @@
+/* =======================
+   RAW TAGS DEFAULT STYLES
+   ======================= */
+
+html {
+  box-sizing: border-box;
+
+  color: $neutral-900;
+  font-family: $txt-font;
+  font-size: 1rem;
+  font-weight: 300;
+
+  scroll-behavior: smooth;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: $grid-1 0;
+}
+
+h1 {
+  font-size: $h1-size;
+}
+
+h2 {
+  font-size: $h2-size;
+}
+
+h3 {
+  font-size: $h3-size;
+}
+
+h4 {
+  font-size: $h4-size;
+}
+
+h5 {
+  font-size: $h5-size;
+}
+
+h6 {
+  font-size: $h6-size;
+}
+
+footer,
+header,
+main {
+  @include large-wrapper;
+}

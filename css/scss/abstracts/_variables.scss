@@ -1,13 +1,56 @@
+// ========
+// SPACINGS
+// ========
+
+$grid-1: 0.5rem; // for a grid based on a 8px unit if 1rem stays to 16px
+
+$grid-sm: $grid-1 / 2; // geometric progression
+$grid-xs: $grid-1 / 4;
+
+$grid-2: $grid-1 * 2; // arithmetic progression
+$grid-3: $grid-1 * 3;
+$grid-4: $grid-1 * 4;
+$grid-5: $grid-1 * 5;
+$grid-6: $grid-1 * 6;
+$grid-7: $grid-1 * 7;
+$grid-8: $grid-1 * 8;
+
 // ======
 // COLORS
 // ======
 
-$blue-500: #68d9a4;
-$green-500: #3282f7;
-$red-500: #ed6454;
+$primary: #d04f4f;
+
+$info-500: #68d9a4;
+$success-500: #3282f7;
+$danger-500: #ed6454;
+
+$neutral-200: #e7e7e7;
+$neutral-400: #c7bebe;
+$neutral-900: #353535;
 
 // ==========
 // TYPOGRAPHY
 // ==========
 
-$font-family-base: Lato, system-ui, "Helvetica Neue", Arial, sans-serif;
+$txt-font: Lato, system-ui, "Helvetica Neue", Arial, sans-serif;
+$heading-font: $txt-font;
+
+// =======================
+// TEXT AND HEADINGS SIZES
+// =======================
+
+$txt-size: 1rem;
+$sm-size: 0.9 * $txt-size;
+$h6-size: 1.1 * $txt-size;
+$h5-size: 1.1 * $h6-size;
+$h4-size: 1.1 * $h5-size;
+$h3-size: 1.1 * $h4-size;
+$h2-size: 1.1 * $h3-size;
+$h1-size: 1.1 * $h2-size;
+
+// ====================================
+// BREAKPOINTS AND CONTAINERS MAX-WIDTH
+// ====================================
+
+$large-container-width: 1280px;

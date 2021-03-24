@@ -5,8 +5,12 @@
 
 // 2. Vendors:
 @import "abstracts/variables";
+@import "abstracts/mixins";
 
 // 3. Base stuff:
+@import "base/spacings";
+@import "base/typography";
+@import "base/tags";
 
 // 4. Layout-related sections:
 

@@ -1,0 +1,9 @@
+// =====================================
+// WRAPPER MIXINS
+// to contain contents on larger screens
+// =====================================
+
+@mixin large-wrapper {
+  max-width: $large-container-width;
+  margin: auto;
+}
