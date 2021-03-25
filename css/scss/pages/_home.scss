@@ -23,8 +23,6 @@
     border: none;
 
     background: $neutral-200;
-
-    cursor: pointer;
   }
 
   i {
@@ -50,10 +48,37 @@
     padding: $grid-2;
     border-radius: $grid-sm;
 
+    color: white;
+    font-size: $h5-size;
+
     cursor: pointer;
 
     @media (min-width: $small-breakpoint) {
       padding: $grid-3 $grid-2;
+    }
+
+    &--info {
+      background: $info-500;
+
+      &:hover {
+        background: darken($info-500, 10)
+      }
+    }
+
+    &--success {
+      background: $success-500;
+
+      &:hover {
+        background: darken($success-500, 12)
+      }
+    }
+
+    &--danger {
+      background: $danger-500;
+
+      &:hover {
+        background: darken($danger-500, 8)
+      }
     }
   }
 }

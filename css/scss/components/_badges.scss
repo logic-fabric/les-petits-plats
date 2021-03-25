@@ -4,9 +4,35 @@
   padding: $grid-1 $grid-2;
   border-radius: $grid-sm;
 
+  color: white;
+
   cursor: pointer;
 
   i {
     margin-left: $grid-1;
+  }
+
+  &--info {
+    background: $info-500;
+
+    &:hover {
+      background: darken($info-500, 10);
+    }
+  }
+
+  &--success {
+    background: $success-500;
+
+    &:hover {
+      background: darken($success-500, 12);
+    }
+  }
+
+  &--danger {
+    background: $danger-500;
+
+    &:hover {
+      background: darken($danger-500, 8);
+    }
   }
 }
