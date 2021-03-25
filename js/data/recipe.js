@@ -1,5 +1,7 @@
 "use strict";
 
+import { sortAlphabetically } from "../utilities/sort.js";
+
 export class Recipe {
   constructor(
     id,
@@ -69,19 +71,19 @@ export class RecipesList {
   get sortedAppliances() {
     const appliances = this._collectAppliances();
 
-    return appliances.sort();
+    return sortAlphabetically(appliances);
   }
 
   get sortedIngredients() {
     const ingredients = this._collectIngredients();
 
-    return ingredients.sort();
+    return sortAlphabetically(ingredients);
   }
 
   get sortedUstensils() {
     const ustensils = this._collectUstensils();
 
-    return ustensils.sort();
+    return sortAlphabetically(ustensils);
   }
 
   sortByName() {
