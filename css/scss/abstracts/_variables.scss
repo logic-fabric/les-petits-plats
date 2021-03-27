@@ -15,6 +15,21 @@ $grid-6: $grid-1 * 6;
 $grid-7: $grid-1 * 7;
 $grid-8: $grid-1 * 8;
 
+// =========
+// Z-INDEXES
+// =========
+
+$z-ground: 0;
+$z-in-front: 1000;
+$z-dropdown: 2000;
+$z-nav-secondary: 3000;
+$z-header-footer: 4000;
+$z-nav-primary: 5000;
+$z-fullscreen-functionality: 6000;
+$z-special-case: 7000;
+$z-modal: 8000;
+$z-notification: 9000;
+
 // ======
 // COLORS
 // ======

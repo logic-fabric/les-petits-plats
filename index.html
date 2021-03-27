@@ -83,25 +83,34 @@
 
       <div class="p-filters-wrapper">
         <div class="p-select-filter p-select-filter--info">
-          <span>Ingrédients</span>
-          <i class="fas fa-chevron-down"></i>
+          <div class="p-select-filter__label">
+            <span>Ingrédients</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <input type="text" placeholder="Rechercher un ingérdient" />
+          <ul>
+            <li>Asperges</li>
+            <li>Chocolat</li>
+            <li>Moutarde de Dijon</li>
+          </ul>
         </div>
 
         <div class="p-select-filter p-select-filter--success">
-          <span>Appareil</span>
-          <i class="fas fa-chevron-down"></i>
+          <div class="p-select-filter__label">
+            <span>Appareil</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
         </div>
 
         <div class="p-select-filter p-select-filter--danger">
-          <span>Ustensiles</span>
-          <i class="fas fa-chevron-down"></i>
+          <div class="p-select-filter__label">
+            <span>Ustensiles</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
         </div>
       </div>
 
-      <div
-        class="row-12 has-gutter-xl mt-2"
-        id="cards-wrapper"
-      ></div>
+      <div class="row-12 has-gutter-xl mt-2" id="cards-wrapper"></div>
     </main>
   </body>
 </html>

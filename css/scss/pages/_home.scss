@@ -41,12 +41,13 @@
 
   .p-select-filter {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    position: relative;
 
     width: 11rem;
     margin: 0 $grid-2 $grid-1 0;
-    padding: $grid-2;
-    border: none;
+
     border-radius: $grid-sm;
 
     color: white;
@@ -54,15 +55,66 @@
 
     cursor: pointer;
 
-    @media (min-width: $small-breakpoint) {
-      padding: $grid-3 $grid-2;
+    &__label {
+      display: flex;
+      justify-content: space-between;
+
+      padding: $grid-2;
+
+      @media (min-width: $small-breakpoint) {
+        padding: $grid-3 $grid-2;
+      }
+    }
+
+    input {
+      display: none;
+
+      padding: $grid-2 0;
+      border: none;
+
+      color: white;
+      font-size: $h5-size;
+    }
+
+    ul {
+      position: absolute;
+      top: 4rem;
+      left: 0;
+      z-index: $z-dropdown;
+
+      width: 36rem;
+      border-radius: $grid-sm;;
+
+      li {
+        padding: 0.75 * $grid-2 $grid-2;
+        overflow: hidden;
+
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
     }
 
     &--info {
       background: $info-500;
 
-      &:hover {
-        background: darken($info-500, 10)
+      .p-select-filter__label:hover {
+        background: darken($info-500, 10);
+      }
+
+      input {
+        background: $info-500;
+
+        &::placeholder {
+          color: lighten($info-500, 30);
+        }
+      }
+
+      ul {
+        background: $info-500;
+
+        li:hover {
+          background: darken($info-500, 10);
+        }
       }
     }
 
@@ -70,7 +122,7 @@
       background: $success-500;
 
       &:hover {
-        background: darken($success-500, 12)
+        background: darken($success-500, 12);
       }
     }
 
@@ -78,7 +130,7 @@
       background: $danger-500;
 
       &:hover {
-        background: darken($danger-500, 8)
+        background: darken($danger-500, 8);
       }
     }
   }
