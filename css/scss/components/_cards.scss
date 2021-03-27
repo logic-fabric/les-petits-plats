@@ -1,23 +1,23 @@
-.card {
+.c-card {
   border-radius: $grid-sm;
   overflow: hidden;
 
   margin: 0 0 $grid-6 0;
 }
 
-.card__img {
-  height: 10rem;
+.c-card__img {
+  height: 11rem;
 
   background: $neutral-400;
 }
 
-.card__body {
+.c-card__body {
   height: 14rem;
   padding: $grid-2 $grid-3;
 
   background: $neutral-200;
 
-  .card__title {
+  .c-card__title {
     display: flex;
     justify-content: space-between;
 
@@ -26,10 +26,24 @@
     font-size: $h5-size;
   }
 
+  .c-card__ingredients,
+  .c-card__description {
+    max-height: 7.9rem;
+    overflow: hidden;
+  }
+
+  .c-card-ingredients {
+  }
+
   p {
+    display: -webkit-box;
+
     margin: $grid-xs 0;
+    overflow: hidden;
 
     font-size: $sm-size;
     text-overflow: ellipsis;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
   }
 }

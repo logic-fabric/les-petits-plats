@@ -11,6 +11,7 @@ export function sortAlphabetically(strings) {
       .replace(/[îï]/g, "i")
       .replace(/[ôö]/g, "o")
       .replace(/[ùûû]/g, "u");
+
     asciiConverter.push([str, convertedStr]);
   }
 
