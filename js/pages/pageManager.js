@@ -15,7 +15,23 @@ export class PageManager {
 
   _renderBadges() {}
 
-  _renderDropdownOptions() {}
+  _renderDropdownOptions() {
+    const ingredientsList = document.getElementById("ingredients-list");
+    const ingredients = this._recipesList.sortedIngredients;
+    const numberOfIngredients = ingredients.length;
+
+    ingredientsList.style.height = `${
+      Math.ceil(numberOfIngredients / 5) * 40 - 16
+    }px`;
+
+    let htmlContent = "";
+
+    for (let ingredient of ingredients) {
+      htmlContent += `<li>${ingredient}</li>`;
+    }
+
+    ingredientsList.innerHTML = htmlContent;
+  }
 
   _renderCards() {
     const cardsWrapper = document.getElementById("cards-wrapper");

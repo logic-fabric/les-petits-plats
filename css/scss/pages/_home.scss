@@ -77,16 +77,21 @@
     }
 
     ul {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
       position: absolute;
       top: 4rem;
       left: 0;
       z-index: $z-dropdown;
 
-      width: 36rem;
+      width: 60rem;
+      padding: $grid-1 0;
       border-radius: $grid-sm;;
 
       li {
-        padding: 0.75 * $grid-2 $grid-2;
+        width: 12rem;
+        padding: $grid-1 $grid-2;
         overflow: hidden;
 
         text-overflow: ellipsis;
