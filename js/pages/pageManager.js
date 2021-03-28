@@ -9,19 +9,20 @@ export class PageManager {
 
   render() {
     this._renderBadges();
-    this._renderDropdownOptions();
+    this._renderDropdownOptions(this._recipesList.sortedIngredients);
     this._renderCards();
+
+    this._addSearchBarEvent();
   }
 
   _renderBadges() {}
 
-  _renderDropdownOptions() {
+  _renderDropdownOptions(ingredients) {
     const ingredientsList = document.getElementById("ingredients-list");
-    const ingredients = this._recipesList.sortedIngredients;
     const numberOfIngredients = ingredients.length;
 
     ingredientsList.style.height = `${
-      Math.ceil(numberOfIngredients / 5) * 40 - 16
+      Math.ceil(numberOfIngredients / 5) * 38.5 + 16
     }px`;
 
     let htmlContent = "";
@@ -43,5 +44,21 @@ export class PageManager {
     }
 
     cardsWrapper.innerHTML = htmlContent;
+  }
+
+  _addSearchBarEvent() {
+    const searchBarInput = document.getElementById("search-bar-input");
+
+    searchBarInput.oninput = () => {
+      const userInput = searchBarInput.value;
+
+      if (userInput.length >= 3) {
+        const filteredIngredients = this._recipesList.filterIngredients(
+          userInput
+        );
+
+        this._renderDropdownOptions(filteredIngredients);
+      }
+    };
   }
 }

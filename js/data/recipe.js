@@ -96,4 +96,20 @@ export class RecipesList {
       return 0;
     });
   }
+
+  filterIngredients(userInput) {
+    const filteredIngredients = [];
+
+    userInput = userInput.toLowerCase();
+
+    for (let ingredient of this.sortedIngredients) {
+      ingredient = ingredient.toLowerCase();
+
+      if (ingredient.search(userInput) > -1) {
+        filteredIngredients.push(ingredient);
+      }
+    }
+
+    return filteredIngredients;
+  }
 }
