@@ -21,6 +21,7 @@ export class PageManager {
     const ingredientsList = document.getElementById("ingredients-list");
     const numberOfIngredients = ingredients.length;
 
+    ingredientsList.style.width = `${Math.min(numberOfIngredients, 5) * 12}rem`;
     ingredientsList.style.height = `${
       Math.ceil(numberOfIngredients / 5) * 38.5 + 16
     }px`;
@@ -58,6 +59,8 @@ export class PageManager {
         );
 
         this._renderDropdownOptions(filteredIngredients);
+      } else {
+        this._renderDropdownOptions(this._recipesList.sortedIngredients);
       }
     };
   }
