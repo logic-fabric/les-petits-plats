@@ -56,7 +56,7 @@ export class PageHandler {
       const recipesListToDisplay =
         userInput.length < 3
           ? this._recipesList
-          : this._recipesList.searchByUserInput(userInput);
+          : this._recipesList.searchWithSearchBar(userInput);
 
       this._renderCards(recipesListToDisplay);
     };

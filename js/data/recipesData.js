@@ -37,7 +37,7 @@ export const RECIPES = [
   },
   {
     id: 2,
-    name: "Poisson Cru à la tahitienne",
+    name: "Poisson cru à la tahitienne",
     servings: 2,
     ingredients: [
       {

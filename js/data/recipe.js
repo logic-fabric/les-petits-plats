@@ -34,7 +34,7 @@ export class Recipe {
     for (let item of this.ingredients) {
       let ingredientNameWithoutAccent = removeAccents(item.ingredient);
 
-      ingredientsNames.push(ingredientNameWithoutAccent.toLowerCase);
+      ingredientsNames.push(ingredientNameWithoutAccent);
     }
 
     return ingredientsNames;
@@ -124,7 +124,7 @@ export class RecipesList {
     return filteredIngredients;
   }
 
-  searchByUserInput(userInput) {
+  searchWithSearchBar(userInput) {
     const filteredRecipes = new Set();
     const words = userInput.split(" ");
 
