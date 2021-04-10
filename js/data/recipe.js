@@ -125,21 +125,28 @@ export class RecipesList {
   }
 
   searchWithSearchBar(userInput) {
-    const filteredRecipes = new Set();
+    let filteredRecipes = new Set(this.recipes);
     const words = userInput.split(" ");
 
     const keywords = removeStopWords(words);
 
     for (let word of keywords) {
+      const wordRecipes = new Set();
+
       for (let recipe of this.recipes) {
         if (
           recipe.nameWithoutAccent.includes(word) ||
           recipe.ingredientsNamesWithoutAccent.includes(word) ||
           recipe.descriptionWithoutAccent.includes(word)
         ) {
-          filteredRecipes.add(recipe);
+          wordRecipes.add(recipe);
         }
       }
+
+      // Intersect wordRecipes with actual filteredRecipes:
+      filteredRecipes = new Set(
+        [...wordRecipes].filter((recipe) => filteredRecipes.has(recipe))
+      );
     }
 
     return new RecipesList([...filteredRecipes]);
