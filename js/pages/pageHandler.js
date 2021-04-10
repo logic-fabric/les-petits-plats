@@ -13,6 +13,7 @@ export class PageHandler {
     this._renderCards(this._recipesList);
 
     this._addSearchBarEvent();
+    this._addOpenIngredientFilter();
   }
 
   _renderBadges() {}
@@ -60,5 +61,32 @@ export class PageHandler {
 
       this._renderCards(recipesListToDisplay);
     };
+  }
+
+  _addOpenIngredientFilter() {
+    const ingredientFilterLabel = document.getElementById(
+      "ingredient-filter-label"
+    );
+    const ingredientFilterName = document.querySelector(
+      "#ingredient-filter-label span"
+    );
+    const ingredientFilterIcon = document.querySelector(
+      "#ingredient-filter-label i"
+    );
+    const ingredientFilterInput = document.getElementById("ingredient");
+    const ingredientsList = document.getElementById("ingredients-list");
+
+    ingredientFilterLabel.onclick = (e) => {
+      e.preventDefault();
+
+      ingredientFilterLabel.classList.toggle("closed");
+      ingredientFilterIcon.classList.toggle("fa-chevton-down");
+      ingredientFilterIcon.classList.toggle("fa-chevron-up");
+      ingredientsList.classList.toggle("opened");
+    };
+
+    ingredientFilterInput.onclick = (e) => {
+      e.stopPropagation();
+    }
   }
 }

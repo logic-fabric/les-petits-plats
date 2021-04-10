@@ -47,7 +47,7 @@
       <img
         class="mt-2"
         src="img/logo-les-petits-plats.png"
-        alt="Logo Les petits plats"
+        alt="Les petits plats"
         height="96"
       />
     </header>
@@ -66,42 +66,46 @@
       </form>
 
       <div class="p-badges-wrapper">
-        <div class="c-badge c-badge--info">
+        <div class="c-badge c-badge--ingredient">
           <span>Coco</span>
           <i class="far fa-times-circle"></i>
         </div>
 
-        <div class="c-badge c-badge--success">
+        <div class="c-badge c-badge--appliance">
           <span>Blender</span>
           <i class="far fa-times-circle"></i>
         </div>
 
-        <div class="c-badge c-badge--danger">
+        <div class="c-badge c-badge--ustensil">
           <span>Cuillère à soupe</span>
           <i class="far fa-times-circle"></i>
         </div>
       </div>
 
       <div class="p-filters-wrapper">
-        <div class="p-select-filter p-select-filter--info">
-          <div class="p-select-filter__label">
+        <div class="p-select-filter p-select-filter--ingredients">
+          <label id="ingredient-filter-label" for="ingredient">
             <span>Ingrédients</span>
+            <input
+              type="text"
+              id="ingredient"
+              placeholder="Rechercher un ingrédient"
+            />
             <i class="fas fa-chevron-down"></i>
-          </div>
-          <input type="text" placeholder="Rechercher un ingrédient" />
+          </label>
           <ul id="ingredients-list"></ul>
         </div>
 
-        <div class="p-select-filter p-select-filter--success">
+        <div class="p-select-filter p-select-filter--appliance">
           <div class="p-select-filter__label">
-            <span>Appareil</span>
+            <span>TO DO</span>
             <i class="fas fa-chevron-down"></i>
           </div>
         </div>
 
-        <div class="p-select-filter p-select-filter--danger">
+        <div class="p-select-filter p-select-filter--ustensils">
           <div class="p-select-filter__label">
-            <span>Ustensiles</span>
+            <span>TO DO</span>
             <i class="fas fa-chevron-down"></i>
           </div>
         </div>

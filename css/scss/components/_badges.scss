@@ -12,7 +12,7 @@
     margin-left: $grid-1;
   }
 
-  &--info {
+  &--ingredient {
     background: $info-500;
 
     &:hover {
@@ -20,7 +20,7 @@
     }
   }
 
-  &--success {
+  &--appliance {
     background: $success-500;
 
     &:hover {
@@ -28,7 +28,7 @@
     }
   }
 
-  &--danger {
+  &--ustensil {
     background: $danger-500;
 
     &:hover {

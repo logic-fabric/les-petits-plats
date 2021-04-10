@@ -47,21 +47,22 @@
     justify-content: space-between;
     position: relative;
 
-    width: 11rem;
     margin: 0 $grid-2 $grid-1 0;
-
     border-radius: $grid-sm;
 
     color: white;
     font-size: $h5-size;
 
-    cursor: pointer;
-
-    &__label {
+    label {
       display: flex;
       justify-content: space-between;
 
+      width: 11 * $grid-2;
       padding: $grid-2;
+
+      cursor: pointer;
+
+      transition: width 150ms;
 
       @media (min-width: $small-breakpoint) {
         padding: $grid-3 $grid-2;
@@ -71,24 +72,70 @@
     input {
       display: none;
 
-      padding: $grid-2 0;
+      width: 0;
       border: none;
+      border-radius: $grid-sm;
+      outline: none;
 
       color: white;
       font-size: $h5-size;
+
+      transition: width 50ms 200ms;
+    }
+
+    i {
+      display: inline-block;
+
+      margin: $grid-sm 0 0 $grid-2;
+    }
+
+    label.closed {
+      width: 17 * $grid-2;
+      padding: $grid-1;
+
+      span {
+        display: none;
+      }
+
+      input {
+        display: inline-block;
+
+        width: 13.5 * $grid-2;
+        padding: $grid-1;
+      }
+
+      i {
+        margin: $grid-1 $grid-1 $grid-1 $grid-2;
+      }
+
+      @media (min-width: $small-breakpoint) {
+        width: 20 * $grid-2;
+        padding: $grid-2 $grid-1;
+
+        input {
+          width: 16.5 * $grid-2;
+          padding: $grid-1;
+        }
+      }
     }
 
     ul {
-      display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
+      display: none;
       position: absolute;
       top: 4rem;
       left: 0;
       z-index: $z-dropdown;
 
       padding: $grid-1 0;
-      border-radius: $grid-sm;;
+      border-radius: $grid-sm;
+
+      &.opened {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+
+        content: "un ingrédient";
+      }
 
       li {
         width: 12rem;
@@ -100,10 +147,10 @@
       }
     }
 
-    &--info {
+    &--ingredients {
       background: $info-500;
 
-      .p-select-filter__label:hover {
+      &:hover {
         background: darken($info-500, 10);
       }
 
@@ -124,18 +171,18 @@
       }
     }
 
-    &--success {
+    &--appliance {
       background: $success-500;
 
-      &:hover {
+      label:hover {
         background: darken($success-500, 12);
       }
     }
 
-    &--danger {
+    &--ustensils {
       background: $danger-500;
 
-      &:hover {
+      label:hover {
         background: darken($danger-500, 8);
       }
     }
