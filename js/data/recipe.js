@@ -48,6 +48,7 @@ export class Recipe {
 export class RecipesList {
   constructor(recipes) {
     this.recipes = recipes;
+    this.sortByName();
   }
 
   _collectAppliances() {

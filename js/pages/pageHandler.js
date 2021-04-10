@@ -2,7 +2,7 @@
 
 import { RecipeCard } from "./components/cards.js";
 
-export class PageManager {
+export class PageHandler {
   constructor(recipesList) {
     this._recipesList = recipesList;
   }

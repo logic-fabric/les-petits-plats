@@ -2,13 +2,10 @@
 
 import { RECIPES } from "./data/recipesData.js";
 import { DataFetcher } from "./data/dataFetcher.js";
-import { PageManager } from "./pages/pageManager.js";
+import { PageHandler } from "./pages/pageHandler.js";
 
 const dataFetcher = new DataFetcher(RECIPES);
 const recipesList = dataFetcher.getRecipesList();
-
-recipesList.sortByName();
-
-const pageManager = new PageManager(recipesList);
+const pageManager = new PageHandler(recipesList);
 
 pageManager.render();
