@@ -1770,7 +1770,7 @@ export const RECIPES = [
     ],
     time: 60,
     description:
-      "Préparer la frangipane : mélanger le sucre la poudre d'amander, le beurre et les oeufs. Etaler la moitié de la pâte feuilleté et mettre dans un moule à tarte. Garnir de frangipane et recouvrir du reste de pâte feuilletée. Mettre au four 30 minutes",
+      "Préparer la frangipane : mélanger le sucre la poudre d'amandes, le beurre et les oeufs. Etaler la moitié de la pâte feuilleté et mettre dans un moule à tarte. Garnir de frangipane et recouvrir du reste de pâte feuilletée. Mettre au four 30 minutes",
     appliance: "Four",
     ustensils: ["rouleau à patisserie", "fouet"],
   },

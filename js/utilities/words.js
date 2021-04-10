@@ -18,8 +18,8 @@ function cleanWords(words) {
   return cleanedWords;
 }
 
-function removeAccents(word) {
-  return word
+export function removeAccents(string) {
+  return string
     .toLowerCase()
     .replace(/[àä]/g, "a")
     .replace(/[éèêë]/g, "e")

@@ -1,6 +1,7 @@
 "use strict";
 
 import { sortAlphabetically } from "../utilities/sort.js";
+import { removeAccents, removeStopWords } from "../utilities/words.js";
 
 export class Recipe {
   constructor(
@@ -21,6 +22,26 @@ export class Recipe {
     this.description = description;
     this.appliance = appliance;
     this.ustensils = ustensils;
+  }
+
+  get descriptionWithoutAccent() {
+    return removeAccents(this.description);
+  }
+
+  get ingredientsNamesWithoutAccent() {
+    const ingredientsNames = [];
+
+    for (let item of this.ingredients) {
+      let ingredientNameWithoutAccent = removeAccents(item.ingredient);
+
+      ingredientsNames.push(ingredientNameWithoutAccent.toLowerCase);
+    }
+
+    return ingredientsNames;
+  }
+
+  get nameWithoutAccent() {
+    return removeAccents(this.name);
   }
 }
 
@@ -101,7 +122,28 @@ export class RecipesList {
 
     return filteredIngredients;
   }
-  
+
+  searchByUserInput(userInput) {
+    const filteredRecipes = new Set();
+    const words = userInput.split(" ");
+
+    const keywords = removeStopWords(words);
+
+    for (let word of keywords) {
+      for (let recipe of this.recipes) {
+        if (
+          recipe.nameWithoutAccent.includes(word) ||
+          recipe.ingredientsNamesWithoutAccent.includes(word) ||
+          recipe.descriptionWithoutAccent.includes(word)
+        ) {
+          filteredRecipes.add(recipe);
+        }
+      }
+    }
+
+    return new RecipesList([...filteredRecipes]);
+  }
+
   sortByName() {
     return this.recipes.sort((r1, r2) => {
       const name1 = r1.name.toLowerCase();

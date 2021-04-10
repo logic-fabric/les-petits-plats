@@ -53,9 +53,12 @@ export class PageManager {
     searchBarInput.oninput = () => {
       const userInput = searchBarInput.value;
 
-      if (userInput.length < 3) {
-        this._renderCards(this._recipesList);
-      }
+      const recipesListToDisplay =
+        userInput.length < 3
+          ? this._recipesList
+          : this._recipesList.searchByUserInput(userInput);
+
+      this._renderCards(recipesListToDisplay);
     };
   }
 }
