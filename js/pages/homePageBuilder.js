@@ -124,16 +124,42 @@ export class HomePageBuilder {
     }
   }
 
+  _createFilterBadge(filter, textContent) {
+    const filterBadgesWrapper = document.getElementById(
+      `${filter}-badges-wrapper`
+    );
+
+    const badgeDiv = document.createElement("div");
+    const badgeSpan = document.createElement("span");
+    const badgeCloseIcon = document.createElement("i");
+
+    badgeDiv.className = `c-badge c-badge--${filter}`;
+    badgeSpan.textContent = textContent;
+    badgeCloseIcon.className = "far fa-times-circle";
+
+    badgeDiv.appendChild(badgeSpan);
+    badgeDiv.appendChild(badgeCloseIcon);
+
+    filterBadgesWrapper.appendChild(badgeDiv);
+  }
+
   _addSearchWithFiltersEvents() {
     for (let filter of FILTERS) {
       const filterInput = document.getElementById(`${filter}`);
       const itemsList = document.getElementById(`${filter}-list`);
+      const itemsLines = document.querySelectorAll(`#${filter}-list li`);
 
       filterInput.oninput = () => {
         console.log(`User input for ${filter} >`, filterInput.value);
       };
 
       itemsList.onclick = (e) => e.stopPropagation();
+
+      for (let itemLine of itemsLines) {
+        itemLine.onclick = () => {
+          this._createFilterBadge(filter, itemLine.textContent);
+        };
+      }
     }
   }
 }

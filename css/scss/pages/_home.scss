@@ -34,9 +34,14 @@ $filters-transition-duration: 150ms;
   }
 }
 
-.p-badges-wrapper {
+.p-badges-wrapper,
+.p-filter-badges-wrapper {
   display: flex;
   flex-wrap: wrap;
+}
+
+.p-badges-wrapper {
+  margin: 1.5 * $grid-1 0;
 }
 
 .p-filters-wrapper {
