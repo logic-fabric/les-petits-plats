@@ -6,33 +6,37 @@
 
   color: white;
 
-  cursor: pointer;
+  cursor: default;
 
   i {
     margin-left: $grid-1;
+
+    cursor: pointer;
+
+    transition: color 200ms;
   }
 
   &--ingredient {
     background: $info-500;
 
-    &:hover {
-      background: darken($info-500, 10);
+    i:hover {
+      color: darken($info-500, 20);
     }
   }
 
   &--appliance {
     background: $success-500;
 
-    &:hover {
-      background: darken($success-500, 12);
+    i:hover {
+      color: darken($success-500, 20);
     }
   }
 
   &--ustensil {
     background: $danger-500;
 
-    &:hover {
-      background: darken($danger-500, 8);
+    i:hover {
+      color: darken($danger-500, 15);
     }
   }
 }

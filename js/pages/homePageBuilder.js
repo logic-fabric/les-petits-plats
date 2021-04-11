@@ -141,6 +141,12 @@ export class HomePageBuilder {
     badgeDiv.appendChild(badgeCloseIcon);
 
     filterBadgesWrapper.appendChild(badgeDiv);
+
+    badgeCloseIcon.onclick = (e) => {
+      e.stopPropagation();
+
+      badgeDiv.remove();
+    }
   }
 
   _addSearchWithFiltersEvents() {
