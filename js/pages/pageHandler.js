@@ -11,31 +11,35 @@ export class PageHandler {
 
   render() {
     this._renderBadges();
-    //this._renderDropdownOptions(this._recipesList.sortedIngredients);
+    this._renderFiltersOptions(this._recipesList);
     this._renderCards(this._recipesList);
 
     this._addSearchBarEvent();
-    this._addOpenFilters();
+    this._addOpenFiltersEvents();
+    this._addSearchWithFiltersEvents();
   }
 
   _renderBadges() {}
 
-  _renderDropdownOptions(ingredients) {
-    const ingredientsList = document.getElementById("ingredients-list");
-    const numberOfIngredients = ingredients.length;
+  _renderFiltersOptions(recipesList) {
+    const items = {
+      ingredient: recipesList.sortedIngredients,
+      appliance: recipesList.sortedAppliances,
+      ustensil: recipesList.sortedAppliances,
+    };
 
-    ingredientsList.style.width = `${Math.min(numberOfIngredients, 5) * 12}rem`;
-    ingredientsList.style.height = `${
-      Math.ceil(numberOfIngredients / 5) * 38.5 + 16
-    }px`;
+    for (let filter of FILTERS) {
+      const itemsList = document.getElementById(`${filter}-list`);
+      const itemsQuantity = itemsList.length;
 
-    let htmlContent = "";
+      let htmlContent = "";
 
-    for (let ingredient of ingredients) {
-      htmlContent += `<li>${ingredient}</li>`;
+      for (let item of items[filter]) {
+        htmlContent += `<li>${item}</li>`;
+      }
+
+      itemsList.innerHTML = htmlContent;
     }
-
-    ingredientsList.innerHTML = htmlContent;
   }
 
   _renderCards(recipesList) {
@@ -62,6 +66,7 @@ export class PageHandler {
           : this._recipesList.searchWithSearchBar(userInput);
 
       this._renderCards(recipesListToDisplay);
+      this._renderFiltersOptions(recipesListToDisplay);
     };
   }
 
@@ -80,10 +85,11 @@ export class PageHandler {
     }
   }
 
-  _addOpenFilters() {
+  _addOpenFiltersEvents() {
     for (let filter of FILTERS) {
       const filterLabel = document.getElementById(`${filter}-filter-label`);
       const filterIcon = document.getElementById(`${filter}-filter-icon`);
+      const filterInput = document.getElementById(`${filter}`);
       const itemsList = document.getElementById(`${filter}-list`);
 
       filterLabel.onclick = (e) => {
@@ -95,12 +101,23 @@ export class PageHandler {
         filterIcon.classList.toggle("fa-chevton-down");
         filterIcon.classList.toggle("fa-chevron-up");
         itemsList.classList.toggle("opened");
-      };
 
-      const filterInput = document.getElementById(`${filter}`);
+        filterInput.focus();
+      };
 
       filterInput.onclick = (e) => {
         e.stopPropagation();
+      };
+    }
+  }
+
+  _addSearchWithFiltersEvents() {
+    for (let filter of FILTERS) {
+      const filterInput = document.getElementById(`${filter}`);
+      const itemsList = document.getElementById(`${filter}-list`);
+
+      filterInput.oninput = () => {
+        console.log(`User input for ${filter} >`, filterInput.value);
       };
     }
   }
