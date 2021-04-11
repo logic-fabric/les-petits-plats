@@ -7,10 +7,10 @@ const FILTERS = ["ingredient", "appliance", "ustensil"];
 export class HomePageBuilder {
   constructor(recipesList) {
     this._recipesList = recipesList;
+    this._badgesList = [];
   }
 
   render() {
-    this._renderBadges();
     this._renderFiltersOptions(this._recipesList);
     this._renderCards(this._recipesList);
 
@@ -19,8 +19,6 @@ export class HomePageBuilder {
     this._addCloseAllFiltersEvent();
     this._addSearchWithFiltersEvents();
   }
-
-  _renderBadges() {}
 
   _renderFiltersOptions(recipesList) {
     const items = {
@@ -142,11 +140,17 @@ export class HomePageBuilder {
 
     filterBadgesWrapper.appendChild(badgeDiv);
 
+    this._badgesList.push(textContent);
+
     badgeCloseIcon.onclick = (e) => {
       e.stopPropagation();
 
       badgeDiv.remove();
-    }
+
+      this._badgesList.splice(textContent);
+
+      console.log("badgesList >", this._badgesList);
+    };
   }
 
   _addSearchWithFiltersEvents() {
@@ -163,7 +167,11 @@ export class HomePageBuilder {
 
       for (let itemLine of itemsLines) {
         itemLine.onclick = () => {
-          this._createFilterBadge(filter, itemLine.textContent);
+          if (!this._badgesList.includes(itemLine.textContent)) {
+            this._createFilterBadge(filter, itemLine.textContent);
+          }
+
+          console.log("badgesList >", this._badgesList);
         };
       }
     }
