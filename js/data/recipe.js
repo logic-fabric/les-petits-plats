@@ -133,6 +133,8 @@ export class RecipesList {
     for (let word of keywords) {
       const wordRecipes = new Set();
 
+      word = removeAccents(word);
+
       for (let recipe of this.recipes) {
         if (
           recipe.nameWithoutAccent.includes(word) ||
@@ -143,7 +145,7 @@ export class RecipesList {
         }
       }
 
-      // Intersect wordRecipes with actual filteredRecipes:
+      // intersect wordRecipes with actual filteredRecipes:
       filteredRecipes = new Set(
         [...wordRecipes].filter((recipe) => filteredRecipes.has(recipe))
       );
