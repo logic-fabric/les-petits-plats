@@ -14,8 +14,9 @@ export class HomePageBuilder {
     this._renderFiltersOptions(this._recipesList);
     this._renderCards(this._recipesList);
 
-    this._addSearchBarEvent();
+    this._addSearchBarEvents();
     this._addOpenFiltersEvents();
+    this._addCloseAllFiltersEvent();
     this._addSearchWithFiltersEvents();
   }
 
@@ -54,10 +55,13 @@ export class HomePageBuilder {
     cardsWrapper.innerHTML = htmlContent;
   }
 
-  _addSearchBarEvent() {
+  _addSearchBarEvents() {
+    const searchBar = document.querySelector(".p-search-bar");
     const searchBarInput = document.getElementById("search-bar-input");
 
-    searchBarInput.oninput = () => {
+    searchBar.onclick = (e) => e.stopPropagation();
+
+    searchBarInput.oninput = (e) => {
       const userInput = searchBarInput.value;
 
       const recipesListToDisplay =
@@ -85,6 +89,14 @@ export class HomePageBuilder {
     }
   }
 
+  _addCloseAllFiltersEvent() {
+    const body = document.querySelector("body");
+
+    body.onclick = () => {
+      this._closeAllFiltersExceptClicked("no filter clicked");
+    };
+  }
+
   _addOpenFiltersEvents() {
     for (let filter of FILTERS) {
       const filterLabel = document.getElementById(`${filter}-filter-label`);
@@ -93,6 +105,7 @@ export class HomePageBuilder {
       const itemsList = document.getElementById(`${filter}-list`);
 
       filterLabel.onclick = (e) => {
+        e.stopPropagation();
         e.preventDefault();
 
         this._closeAllFiltersExceptClicked(filter);
@@ -119,6 +132,8 @@ export class HomePageBuilder {
       filterInput.oninput = () => {
         console.log(`User input for ${filter} >`, filterInput.value);
       };
+
+      itemsList.onclick = (e) => e.stopPropagation();
     }
   }
 }
