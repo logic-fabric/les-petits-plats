@@ -147,7 +147,7 @@
       }
     }
 
-    &--ingredients {
+    &--ingredient {
       background: $info-500;
 
       &:hover {
@@ -174,16 +174,48 @@
     &--appliance {
       background: $success-500;
 
-      label:hover {
+      &:hover {
         background: darken($success-500, 12);
+      }
+
+      input {
+        background: $success-500;
+
+        &::placeholder {
+          color: lighten($success-500, 32);
+        }
+      }
+
+      ul {
+        background: $success-500;
+
+        li:hover {
+          background: darken($success-500, 12);
+        }
       }
     }
 
-    &--ustensils {
+    &--ustensil {
       background: $danger-500;
 
-      label:hover {
+      &:hover {
         background: darken($danger-500, 8);
+      }
+
+      input {
+        background: $danger-500;
+
+        &::placeholder {
+          color: lighten($danger-500, 30);
+        }
+      }
+
+      ul {
+        background: $danger-500;
+
+        li:hover {
+          background: darken($danger-500, 8);
+        }
       }
     }
   }

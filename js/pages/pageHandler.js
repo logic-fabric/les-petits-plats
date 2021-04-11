@@ -2,6 +2,8 @@
 
 import { RecipeCard } from "./components/cards.js";
 
+const FILTERS = ["ingredient", "appliance", "ustensil"];
+
 export class PageHandler {
   constructor(recipesList) {
     this._recipesList = recipesList;
@@ -13,7 +15,7 @@ export class PageHandler {
     this._renderCards(this._recipesList);
 
     this._addSearchBarEvent();
-    this._addOpenIngredientFilter();
+    this._addOpenFilters();
   }
 
   _renderBadges() {}
@@ -63,30 +65,43 @@ export class PageHandler {
     };
   }
 
-  _addOpenIngredientFilter() {
-    const ingredientFilterLabel = document.getElementById(
-      "ingredient-filter-label"
-    );
-    const ingredientFilterName = document.querySelector(
-      "#ingredient-filter-label span"
-    );
-    const ingredientFilterIcon = document.querySelector(
-      "#ingredient-filter-label i"
-    );
-    const ingredientFilterInput = document.getElementById("ingredient");
-    const ingredientsList = document.getElementById("ingredients-list");
+  _closeAllFiltersExceptClicked(clickedFilter) {
+    for (let filter of FILTERS) {
+      if (filter !== clickedFilter) {
+        const filterLabel = document.getElementById(`${filter}-filter-label`);
+        const filterIcon = document.getElementById(`${filter}-filter-icon`);
+        const itemsList = document.getElementById(`${filter}-list`);
 
-    ingredientFilterLabel.onclick = (e) => {
-      e.preventDefault();
+        filterLabel.classList.remove("closed");
+        filterIcon.classList.add("fa-chevton-down");
+        filterIcon.classList.remove("fa-chevron-up");
+        itemsList.classList.remove("opened");
+      }
+    }
+  }
 
-      ingredientFilterLabel.classList.toggle("closed");
-      ingredientFilterIcon.classList.toggle("fa-chevton-down");
-      ingredientFilterIcon.classList.toggle("fa-chevron-up");
-      ingredientsList.classList.toggle("opened");
-    };
+  _addOpenFilters() {
+    for (let filter of FILTERS) {
+      const filterLabel = document.getElementById(`${filter}-filter-label`);
+      const filterIcon = document.getElementById(`${filter}-filter-icon`);
+      const itemsList = document.getElementById(`${filter}-list`);
 
-    ingredientFilterInput.onclick = (e) => {
-      e.stopPropagation();
+      filterLabel.onclick = (e) => {
+        e.preventDefault();
+
+        this._closeAllFiltersExceptClicked(filter);
+
+        filterLabel.classList.toggle("closed");
+        filterIcon.classList.toggle("fa-chevton-down");
+        filterIcon.classList.toggle("fa-chevron-up");
+        itemsList.classList.toggle("opened");
+      };
+
+      const filterInput = document.getElementById(`${filter}`);
+
+      filterInput.onclick = (e) => {
+        e.stopPropagation();
+      };
     }
   }
 }

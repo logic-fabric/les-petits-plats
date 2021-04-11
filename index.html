@@ -83,7 +83,7 @@
       </div>
 
       <div class="p-filters-wrapper">
-        <div class="p-select-filter p-select-filter--ingredients">
+        <div class="p-select-filter p-select-filter--ingredient">
           <label id="ingredient-filter-label" for="ingredient">
             <span>Ingrédients</span>
             <input
@@ -91,23 +91,35 @@
               id="ingredient"
               placeholder="Rechercher un ingrédient"
             />
-            <i class="fas fa-chevron-down"></i>
+            <i class="fas fa-chevron-down" id="ingredient-filter-icon"></i>
           </label>
-          <ul id="ingredients-list"></ul>
+          <ul id="ingredient-list"></ul>
         </div>
 
         <div class="p-select-filter p-select-filter--appliance">
-          <div class="p-select-filter__label">
-            <span>TO DO</span>
-            <i class="fas fa-chevron-down"></i>
-          </div>
+          <label id="appliance-filter-label" for="appliance">
+            <span>Appareil</span>
+            <input
+              type="text"
+              id="appliance"
+              placeholder="Rechercher un appareil"
+            />
+            <i class="fas fa-chevron-down" id="appliance-filter-icon"></i>
+          </label>
+          <ul id="appliance-list"></ul>
         </div>
 
-        <div class="p-select-filter p-select-filter--ustensils">
-          <div class="p-select-filter__label">
-            <span>TO DO</span>
-            <i class="fas fa-chevron-down"></i>
-          </div>
+        <div class="p-select-filter p-select-filter--ustensil">
+          <label id="ustensil-filter-label" for="ustensil">
+            <span>Ustensiles</span>
+            <input
+              type="text"
+              id="ustensil"
+              placeholder="Rechercher un ustensile"
+            />
+            <i class="fas fa-chevron-down" id="ustensil-filter-icon"></i>
+          </label>
+          <ul id="ustensil-list"></ul>
         </div>
       </div>
 
