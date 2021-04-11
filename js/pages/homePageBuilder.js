@@ -4,7 +4,7 @@ import { RecipeCard } from "./components/cards.js";
 
 const FILTERS = ["ingredient", "appliance", "ustensil"];
 
-export class PageHandler {
+export class HomePageBuilder {
   constructor(recipesList) {
     this._recipesList = recipesList;
   }
