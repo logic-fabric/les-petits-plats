@@ -77,10 +77,10 @@ export class HomePageBuilder {
         const filterIcon = document.getElementById(`${filter}-filter-icon`);
         const itemsList = document.getElementById(`${filter}-list`);
 
-        filterLabel.classList.remove("closed");
+        filterLabel.classList.remove("clicked");
         filterIcon.classList.add("fa-chevton-down");
         filterIcon.classList.remove("fa-chevron-up");
-        itemsList.classList.remove("opened");
+        itemsList.classList.add("closed");
       }
     }
   }
@@ -97,10 +97,10 @@ export class HomePageBuilder {
 
         this._closeAllFiltersExceptClicked(filter);
 
-        filterLabel.classList.toggle("closed");
+        filterLabel.classList.toggle("clicked");
         filterIcon.classList.toggle("fa-chevton-down");
         filterIcon.classList.toggle("fa-chevron-up");
-        itemsList.classList.toggle("opened");
+        itemsList.classList.toggle("closed");
 
         filterInput.focus();
       };
