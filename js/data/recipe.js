@@ -124,11 +124,15 @@ export class RecipesList {
     return filteredIngredients;
   }
 
-  searchWithSearchBar(userInput) {
+  search(userRequest) {
+    if (userRequest.length < 3) return this;
+
     let filteredRecipes = new Set(this.recipes);
-    const words = userInput.split(" ");
+    const words = userRequest.split(" ");
 
     const keywords = removeStopWords(words);
+
+    console.log(`Search recipes for "${userRequest}"`);
 
     for (let word of keywords) {
       const wordRecipes = new Set();

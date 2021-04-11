@@ -10,6 +10,12 @@ export class HomePageBuilder {
     this._badgesList = [];
   }
 
+  get _userRequest() {
+    const searchBarInput = document.getElementById("search-bar-input");
+
+    return `${searchBarInput.value} ${this._badgesList.join(" ")}`;
+  }
+
   render() {
     this._renderFiltersOptions(this._recipesList);
     this._renderCards(this._recipesList);
@@ -17,7 +23,6 @@ export class HomePageBuilder {
     this._addSearchBarEvents();
     this._addOpenFiltersEvents();
     this._addCloseAllFiltersEvent();
-    this._addSearchWithFiltersEvents();
   }
 
   _renderFiltersOptions(recipesList) {
@@ -39,6 +44,8 @@ export class HomePageBuilder {
 
       itemsList.innerHTML = htmlContent;
     }
+
+    this._addSearchWithFiltersEvents();
   }
 
   _renderCards(recipesList) {
@@ -60,12 +67,7 @@ export class HomePageBuilder {
     searchBar.onclick = (e) => e.stopPropagation();
 
     searchBarInput.oninput = (e) => {
-      const userInput = searchBarInput.value;
-
-      const recipesListToDisplay =
-        userInput.length < 3
-          ? this._recipesList
-          : this._recipesList.searchWithSearchBar(userInput);
+      const recipesListToDisplay = this._recipesList.search(this._userRequest);
 
       this._renderCards(recipesListToDisplay);
       this._renderFiltersOptions(recipesListToDisplay);
@@ -149,7 +151,10 @@ export class HomePageBuilder {
 
       this._badgesList.splice(textContent);
 
-      console.log("badgesList >", this._badgesList);
+      const recipesListToDisplay = this._recipesList.search(this._userRequest);
+
+      this._renderCards(recipesListToDisplay);
+      this._renderFiltersOptions(recipesListToDisplay);
     };
   }
 
@@ -169,9 +174,14 @@ export class HomePageBuilder {
         itemLine.onclick = () => {
           if (!this._badgesList.includes(itemLine.textContent)) {
             this._createFilterBadge(filter, itemLine.textContent);
-          }
 
-          console.log("badgesList >", this._badgesList);
+            const recipesListToDisplay = this._recipesList.search(
+              this._userRequest
+            );
+
+            this._renderCards(recipesListToDisplay);
+            this._renderFiltersOptions(recipesListToDisplay);
+          }
         };
       }
     }
