@@ -20,7 +20,7 @@ export class HomePageBuilder {
   get _userRequest() {
     const searchBarInput = document.getElementById("search-bar-input");
 
-    return `${searchBarInput.value} ${this._badgesList.join(" ")}`.trim();
+    return [searchBarInput.value.trim(), this._badgesList.join(" ").trim()];
   }
 
   render() {

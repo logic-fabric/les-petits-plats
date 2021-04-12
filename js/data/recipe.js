@@ -115,40 +115,46 @@ export class RecipesList {
 
   /**
    * Search recipes corresponding to the input in search bar and active badges.
-   * @param {string} userRequest 
+   * @param {Array.string} userRequest - [search bar input, joined badges]
    * @returns {RecipesList}
    */
   search(userRequest) {
-    if (userRequest.length < 3) {
+    console.log("Search recipes for", userRequest);
+
+    const [searchBarInput, joinedBadges] = userRequest;
+
+    if (searchBarInput.length < 3 && searchBarInput != "") {
       return this;
     }
 
+    userRequest = `${searchBarInput} ${joinedBadges}`;
+
     let filteredRecipes = new Set(this.recipes);
+
     const words = userRequest.split(" ");
     const keywords = removeStopWords(words);
 
-    console.log(`Search recipes for "${userRequest}"`);
+    for (let keyword of keywords) {
+      // find all recipes containing this keyword:
+      const keywordRecipes = new Set();
 
-    for (let word of keywords) {
-      const wordRecipes = new Set();
-
-      word = removeAccents(word);
+      keyword = removeAccents(keyword);
 
       for (let recipe of this.recipes) {
         if (
-          recipe.nameWithoutAccent.includes(word) ||
-          recipe.ingredientsListWithoutAccent.includes(word) ||
-          recipe.applianceNameWithoutAccent.includes(word) ||
-          recipe.ustensilsListWithoutAccent.includes(word) ||
-          recipe.descriptionWithoutAccent.includes(word)
+          recipe.nameWithoutAccent.includes(keyword) ||
+          recipe.ingredientsListWithoutAccent.includes(keyword) ||
+          recipe.applianceNameWithoutAccent.includes(keyword) ||
+          recipe.ustensilsListWithoutAccent.includes(keyword) ||
+          recipe.descriptionWithoutAccent.includes(keyword)
         ) {
-          wordRecipes.add(recipe);
+          keywordRecipes.add(recipe);
         }
       }
 
-      // intersect wordRecipes with actual filteredRecipes:
+      // intersect keywordRecipes with actual filteredRecipes:
       filteredRecipes = new Set(
-        [...wordRecipes].filter((recipe) => filteredRecipes.has(recipe))
+        [...keywordRecipes].filter((recipe) => filteredRecipes.has(recipe))
       );
     }
 
