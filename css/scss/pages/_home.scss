@@ -10,7 +10,7 @@ $filters-transition-duration: 150ms;
 
   input {
     width: calc(100% - 5rem);
-    padding: $grid-3 $grid-4;
+    padding: 0 0 0 $grid-2;
     border: none;
     outline: none;
 
@@ -19,18 +19,19 @@ $filters-transition-duration: 150ms;
     &::placeholder {
       color: $neutral-600;
     }
-  }
 
-  button {
-    padding: 1.2 * $grid-2 $grid-2;
-    border: none;
-    outline: none;
-
-    background: $neutral-200;
+    @media (min-width: $small-breakpoint) {
+      padding: $grid-3 $grid-4;
+    }
   }
 
   i {
+    padding: 1.2 * $grid-2 $grid-2;
+    border: none;
+
     font-size: 2rem;
+
+    background: $neutral-200;
   }
 }
 

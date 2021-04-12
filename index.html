@@ -4,7 +4,10 @@
   <head>
     <meta charset="utf-8" />
     <title>Les petits plats</title>
-    <meta name="description" content="" />
+    <meta
+      name="description"
+      content="Trouvez les meilleurs recettes de Petits plats, à partir de leut nom, ingrédients ou ustensiles de cuisine."
+    />
     <meta name="author" content="Lowic Mangin" />
 
     <meta
@@ -53,18 +56,18 @@
     </header>
 
     <main>
+      <!-- Search bar: -->
       <form class="p-search-bar mh-2" id="search-bar-form" action="">
         <input
           class="txt-h5"
           id="search-bar-input"
           type="text"
-          placeholder="Rechercher un ingrédient, appareil, ustensile ou une recette"
+          placeholder="Rechercher une recette, un ingrédient, appareil ou ustensile"
         />
-        <button type="button">
-          <i class="fas fa-search"></i>
-        </button>
+        <i class="fas fa-search"></i>
       </form>
 
+      <!-- Badges added dynamically: -->
       <div class="p-badges-wrapper">
         <div
           class="p-filter-badges-wrapper"
@@ -79,6 +82,7 @@
         <div class="p-filter-badges-wrapper" id="ustensil-badges-wrapper"></div>
       </div>
 
+      <!-- Filters for advanced search: -->
       <div class="p-filters-wrapper">
         <div class="p-filter p-filter--ingredient">
           <label id="ingredient-filter-label" for="ingredient">
@@ -120,6 +124,7 @@
         </div>
       </div>
 
+      <!-- Recipe cards added dynamically: -->
       <div class="row-12 has-gutter-xl mt-2" id="cards-wrapper"></div>
     </main>
   </body>
