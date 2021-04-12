@@ -1,11 +1,11 @@
 "use strict";
 
-import { sortAlphabetically } from "../utilities/sort.js";
 import {
   capitalizeFirstChar,
   removeAccents,
   removeStopWords,
-} from "../utilities/words.js";
+  sortAlphabetically,
+} from "../utilities/strings.js";
 
 export class Recipe {
   constructor(

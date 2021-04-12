@@ -1,7 +1,7 @@
 "use strict";
 
 import { RecipeCard } from "./components/cards.js";
-import { removeAccents } from "../utilities/words.js";
+import { removeAccents } from "../utilities/strings.js";
 
 const FILTERS = ["ingredient", "appliance", "ustensil"];
 
