@@ -8,24 +8,33 @@ const FILTERS = ["ingredient", "appliance", "ustensil"];
 export class HomePageBuilder {
   constructor(recipesList) {
     this._recipesList = recipesList;
-
     this._badgesList = [];
-    this._itemsListsToDisplay = {
-      ingredient: this._recipesList.sortedIngredients,
-      appliance: this._recipesList.sortedAppliances,
-      ustensil: this._recipesList.sortedAppliances,
-    };
   }
 
   get _userRequest() {
     const searchBarInput = document.getElementById("search-bar-input");
 
-    return [searchBarInput.value.trim(), this._badgesList.join(" ").trim()];
+    const userInput = searchBarInput.value.trim();
+    const joinedBadges = this._badgesList.join(" ").trim();
+
+    return [userInput, joinedBadges];
+  }
+
+  get _itemsListsToDisplay() {
+    return {
+      ingredient: this._recipesListToDisplay.sortedIngredients,
+      appliance: this._recipesListToDisplay.sortedAppliances,
+      ustensil: this._recipesListToDisplay.sortedAppliances,
+    };
+  }
+
+  get _recipesListToDisplay() {
+    return this._recipesList.search(this._userRequest);
   }
 
   render() {
     this._renderFiltersOptions(this._itemsListsToDisplay);
-    this._renderCards(this._recipesList);
+    this._renderCards(this._recipesListToDisplay);
 
     this._addSearchBarEvents();
     this._addOpenFiltersEvents();
@@ -35,7 +44,6 @@ export class HomePageBuilder {
   _renderFiltersOptions(itemsLists) {
     for (let filter of FILTERS) {
       const itemsList = document.getElementById(`${filter}-list`);
-      const itemsQuantity = itemsList.length;
 
       let htmlContent = "";
 
@@ -67,22 +75,14 @@ export class HomePageBuilder {
 
     searchBarForm.onclick = (e) => e.stopPropagation();
 
-    searchBarForm.onsubmit = (e) => {
-      e.preventDefault();
-
-      searchBarInput.blur();
+    searchBarInput.oninput = (e) => {
+      this._renderFiltersOptions(this._itemsListsToDisplay);
+      this._renderCards(this._recipesListToDisplay);
     };
 
-    searchBarInput.oninput = (e) => {
-      const recipesListToDisplay = this._recipesList.search(this._userRequest);
-      const itemsListsToDisplay = {
-        ingredient: recipesListToDisplay.sortedIngredients,
-        appliance: recipesListToDisplay.sortedAppliances,
-        ustensil: recipesListToDisplay.sortedAppliances,
-      };
-
-      this._renderCards(recipesListToDisplay);
-      this._renderFiltersOptions(itemsListsToDisplay);
+    searchBarForm.onsubmit = (e) => {
+      e.preventDefault();
+      searchBarInput.blur();
     };
   }
 
@@ -94,7 +94,7 @@ export class HomePageBuilder {
         const itemsList = document.getElementById(`${filter}-list`);
 
         filterLabel.classList.remove("clicked");
-        filterIcon.classList.add("fa-chevton-down");
+        filterIcon.classList.add("fa-chevron-down");
         filterIcon.classList.remove("fa-chevron-up");
         itemsList.classList.add("closed");
       }
@@ -105,7 +105,7 @@ export class HomePageBuilder {
     const body = document.querySelector("body");
 
     body.onclick = () => {
-      this._closeAllFiltersExceptClicked("no filter clicked");
+      this._closeAllFiltersExceptClicked();
     };
   }
 
@@ -151,7 +151,6 @@ export class HomePageBuilder {
 
     badgeDiv.appendChild(badgeSpan);
     badgeDiv.appendChild(badgeCloseIcon);
-
     filterBadgesWrapper.appendChild(badgeDiv);
 
     this._badgesList.push(textContent);
@@ -163,15 +162,8 @@ export class HomePageBuilder {
 
       this._badgesList.splice(textContent);
 
-      const recipesListToDisplay = this._recipesList.search(this._userRequest);
-      const itemsListsToDisplay = {
-        ingredient: recipesListToDisplay.sortedIngredients,
-        appliance: recipesListToDisplay.sortedAppliances,
-        ustensil: recipesListToDisplay.sortedAppliances,
-      };
-
-      this._renderCards(recipesListToDisplay);
-      this._renderFiltersOptions(itemsListsToDisplay);
+      this._renderFiltersOptions(this._itemsListsToDisplay);
+      this._renderCards(this._recipesListToDisplay);
     };
   }
 
@@ -184,26 +176,13 @@ export class HomePageBuilder {
       filterInput.oninput = () => {
         console.log(`User input for ${filter} >`, filterInput.value);
 
-        const recipesListToDisplay = this._recipesList.search(
-          this._userRequest
+        const itemsListsToDisplay = this._itemsListsToDisplay;
+
+        itemsListsToDisplay[filter] = itemsListsToDisplay[
+          filter
+        ].filter((item) =>
+          removeAccents(item).startsWith(removeAccents(filterInput.value))
         );
-        const itemsListsToDisplay = {
-          ingredient: recipesListToDisplay.sortedIngredients,
-          appliance: recipesListToDisplay.sortedAppliances,
-          ustensil: recipesListToDisplay.sortedAppliances,
-        };
-
-        const filteredItems = [];
-
-        for (let item of itemsListsToDisplay[filter]) {
-          if (
-            removeAccents(item).startsWith(removeAccents(filterInput.value))
-          ) {
-            filteredItems.push(item);
-          }
-        }
-
-        itemsListsToDisplay[filter] = filteredItems;
 
         this._renderFiltersOptions(itemsListsToDisplay);
       };
@@ -222,18 +201,8 @@ export class HomePageBuilder {
         itemLine.onclick = () => {
           if (!this._badgesList.includes(itemLine.textContent)) {
             this._createFilterBadge(filter, itemLine.textContent);
-
-            const recipesListToDisplay = this._recipesList.search(
-              this._userRequest
-            );
-            const itemsListsToDisplay = {
-              ingredient: recipesListToDisplay.sortedIngredients,
-              appliance: recipesListToDisplay.sortedAppliances,
-              ustensil: recipesListToDisplay.sortedAppliances,
-            };
-
-            this._renderCards(recipesListToDisplay);
-            this._renderFiltersOptions(itemsListsToDisplay);
+            this._renderFiltersOptions(this._itemsListsToDisplay);
+            this._renderCards(this._recipesListToDisplay);
           }
         };
       }
