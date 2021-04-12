@@ -8,6 +8,10 @@ for (let word of FRENCH_STOP_WORDS) {
   STOP_WORDS.push(removeAccents(word));
 }
 
+export function capitalizeFirstChar(str) {
+  return str[0].toUpperCase() + str.slice(1)
+}
+
 function cleanWords(words) {
   const cleanedWords = [];
 

@@ -1,7 +1,11 @@
 "use strict";
 
 import { sortAlphabetically } from "../utilities/sort.js";
-import { removeAccents, removeStopWords } from "../utilities/words.js";
+import {
+  capitalizeFirstChar,
+  removeAccents,
+  removeStopWords,
+} from "../utilities/words.js";
 
 export class Recipe {
   constructor(
@@ -24,36 +28,36 @@ export class Recipe {
     this.ustensils = ustensils;
   }
 
-  get descriptionWithoutAccent() {
-    return removeAccents(this.description);
-  }
-
-  get ingredientsNamesWithoutAccent() {
-    const ingredientsNames = [];
-
-    for (let item of this.ingredients) {
-      ingredientsNames.push(removeAccents(item.ingredient));
-    }
-
-    return ingredientsNames;
-  }
-
   get applianceNameWithoutAccent() {
     return removeAccents(this.appliance);
   }
 
-  get ustensilsNamesWithoutAccent() {
-    const ustensilsNames = [];
+  get descriptionWithoutAccent() {
+    return removeAccents(this.description);
+  }
 
-    for (let ustensil of this.ustensils) {
-      ustensilsNames.push(removeAccents(ustensil));
+  get ingredientsListWithoutAccent() {
+    const ingredientsList = [];
+
+    for (let item of this.ingredients) {
+      ingredientsList.push(removeAccents(item.ingredient));
     }
 
-    return ustensilsNames;
+    return ingredientsList;
   }
 
   get nameWithoutAccent() {
     return removeAccents(this.name);
+  }
+
+  get ustensilsListWithoutAccent() {
+    const ustensilsList = [];
+
+    for (let ustensil of this.ustensils) {
+      ustensilsList.push(removeAccents(ustensil));
+    }
+
+    return ustensilsList;
   }
 }
 
@@ -63,13 +67,23 @@ export class RecipesList {
     this.sortByName();
   }
 
+  get sortedAppliances() {
+    return sortAlphabetically(this._collectAppliances());
+  }
+
+  get sortedIngredients() {
+    return sortAlphabetically(this._collectIngredients());
+  }
+
+  get sortedUstensils() {
+    return sortAlphabetically(this._collectUstensils());
+  }
+
   _collectAppliances() {
     const appliances = new Set();
 
     for (let recipe of this.recipes) {
-      appliances.add(
-        recipe.appliance[0].toUpperCase() + recipe.appliance.slice(1)
-      );
+      appliances.add(capitalizeFirstChar(recipe.appliance));
     }
 
     return [...appliances];
@@ -79,11 +93,8 @@ export class RecipesList {
     const ingredients = new Set();
 
     for (let recipe of this.recipes) {
-      for (let ingredient of recipe.ingredients) {
-        ingredients.add(
-          ingredient.ingredient[0].toUpperCase() +
-            ingredient.ingredient.slice(1)
-        );
+      for (let item of recipe.ingredients) {
+        ingredients.add(capitalizeFirstChar(item.ingredient));
       }
     }
 
@@ -95,47 +106,18 @@ export class RecipesList {
 
     for (let recipe of this.recipes) {
       for (let ustensil of recipe.ustensils) {
-        ustensils.add(ustensil.toUpperCase()[0] + ustensil.slice(1));
+        ustensils.add(capitalizeFirstChar(ustensil));
       }
     }
 
     return [...ustensils];
   }
 
-  get sortedAppliances() {
-    const appliances = this._collectAppliances();
-
-    return sortAlphabetically(appliances);
-  }
-
-  get sortedIngredients() {
-    const ingredients = this._collectIngredients();
-
-    return sortAlphabetically(ingredients);
-  }
-
-  get sortedUstensils() {
-    const ustensils = this._collectUstensils();
-
-    return sortAlphabetically(ustensils);
-  }
-
-  filterIngredients(userInput) {
-    const filteredIngredients = [];
-
-    userInput = userInput.toLowerCase();
-
-    for (let ingredient of this.sortedIngredients) {
-      ingredient = ingredient.toLowerCase();
-
-      if (ingredient.search(userInput) > -1) {
-        filteredIngredients.push(ingredient);
-      }
-    }
-
-    return filteredIngredients;
-  }
-
+  /**
+   * Search recipes corresponding to the input in search bar and active badges.
+   * @param {string} userRequest 
+   * @returns {RecipesList}
+   */
   search(userRequest) {
     if (userRequest.length < 3) {
       return this;
@@ -155,9 +137,9 @@ export class RecipesList {
       for (let recipe of this.recipes) {
         if (
           recipe.nameWithoutAccent.includes(word) ||
-          recipe.ingredientsNamesWithoutAccent.includes(word) ||
+          recipe.ingredientsListWithoutAccent.includes(word) ||
           recipe.applianceNameWithoutAccent.includes(word) ||
-          recipe.ustensilsNamesWithoutAccent.includes(word) ||
+          recipe.ustensilsListWithoutAccent.includes(word) ||
           recipe.descriptionWithoutAccent.includes(word)
         ) {
           wordRecipes.add(recipe);
