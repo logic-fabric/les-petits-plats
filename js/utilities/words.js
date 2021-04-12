@@ -8,24 +8,25 @@ for (let word of FRENCH_STOP_WORDS) {
   STOP_WORDS.push(removeAccents(word));
 }
 
-export function capitalizeFirstChar(str) {
-  return str[0].toUpperCase() + str.slice(1)
-}
-
-function cleanWords(words) {
-  const cleanedWords = [];
+function trimWords(words) {
+  const trimmeddWords = [];
 
   for (let word of words) {
-    cleanedWords.push(word.trim());
+    trimmeddWords.push(word.trim());
   }
 
-  return cleanedWords;
+  return trimmeddWords;
+}
+
+export function capitalizeFirstChar(str) {
+  return str[0].toUpperCase() + str.slice(1);
 }
 
 export function removeAccents(string) {
   return string
     .toLowerCase()
     .replace(/[àä]/g, "a")
+    .replace(/[ç]/g, "c")
     .replace(/[éèêë]/g, "e")
     .replace(/[îï]/g, "i")
     .replace(/[ôö]/g, "o")
@@ -33,11 +34,10 @@ export function removeAccents(string) {
 }
 
 export function removeStopWords(words) {
-  words = cleanWords(words);
-
+  const trimmedWords = trimWords(words);
   const filteredWords = [];
 
-  for (let word of words) {
+  for (let word of trimmedWords) {
     let wordWithoutAccent = removeAccents(word);
 
     if (word.length > 1 && !STOP_WORDS.includes(wordWithoutAccent)) {
