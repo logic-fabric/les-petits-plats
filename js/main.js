@@ -6,6 +6,5 @@ import { HomePageBuilder } from "./pages/homePageBuilder.js";
 
 const dataFetcher = new DataFetcher(RECIPES);
 const recipesList = dataFetcher.getRecipesList();
-const pageManager = new HomePageBuilder(recipesList);
 
-pageManager.render();
+new HomePageBuilder(recipesList).render();
