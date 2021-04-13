@@ -9,6 +9,11 @@ export class HomePageBuilder {
   constructor(recipesList) {
     this._recipesList = recipesList;
     this._badgesList = [];
+    this._filtersItems = {
+      ingredient: this._recipesList.sortedIngredients,
+      appliance: this._recipesList.sortedAppliances,
+      ustensil: this._recipesList.sortedAppliances,
+    };
   }
 
   get _userRequest() {
@@ -20,21 +25,21 @@ export class HomePageBuilder {
     return [userInput, joinedBadges];
   }
 
-  get _itemsListsToDisplay() {
-    return {
-      ingredient: this._recipesListToDisplay.sortedIngredients,
-      appliance: this._recipesListToDisplay.sortedAppliances,
-      ustensil: this._recipesListToDisplay.sortedAppliances,
-    };
-  }
-
-  get _recipesListToDisplay() {
+  getRecipesListToDisplay() {
     return this._recipesList.search(this._userRequest);
   }
 
+  getItemsListsToDisplay(recipesList) {
+    return {
+      ingredient: recipesList.sortedIngredients,
+      appliance: recipesList.sortedAppliances,
+      ustensil: recipesList.sortedAppliances,
+    };
+  }
+
   render() {
-    this._renderFiltersOptions(this._itemsListsToDisplay);
-    this._renderCards(this._recipesListToDisplay);
+    this._renderFiltersOptions(this._filtersItems);
+    this._renderCards(this._recipesList);
 
     this._addSearchBarEvents();
     this._addOpenFiltersEvents();
@@ -76,8 +81,12 @@ export class HomePageBuilder {
     searchBarForm.onclick = (e) => e.stopPropagation();
 
     searchBarInput.oninput = (e) => {
-      this._renderFiltersOptions(this._itemsListsToDisplay);
-      this._renderCards(this._recipesListToDisplay);
+      const recipesListToDisplay = this.getRecipesListToDisplay();
+
+      this._renderFiltersOptions(
+        this.getItemsListsToDisplay(recipesListToDisplay)
+      );
+      this._renderCards(recipesListToDisplay);
     };
 
     searchBarForm.onsubmit = (e) => {
@@ -162,8 +171,12 @@ export class HomePageBuilder {
 
       this._badgesList.splice(textContent);
 
-      this._renderFiltersOptions(this._itemsListsToDisplay);
-      this._renderCards(this._recipesListToDisplay);
+      const recipesListToDisplay = this.getRecipesListToDisplay();
+
+      this._renderFiltersOptions(
+        this.getItemsListsToDisplay(recipesListToDisplay)
+      );
+      this._renderCards(recipesListToDisplay);
     };
   }
 
@@ -176,7 +189,8 @@ export class HomePageBuilder {
       filterInput.oninput = () => {
         console.log(`User input for ${filter} >`, filterInput.value);
 
-        const itemsListsToDisplay = this._itemsListsToDisplay;
+        let itemsListsToDisplay = {};
+        Object.assign(itemsListsToDisplay, this._filtersItems);
 
         itemsListsToDisplay[filter] = itemsListsToDisplay[
           filter
@@ -201,8 +215,13 @@ export class HomePageBuilder {
         itemLine.onclick = () => {
           if (!this._badgesList.includes(itemLine.textContent)) {
             this._createFilterBadge(filter, itemLine.textContent);
-            this._renderFiltersOptions(this._itemsListsToDisplay);
-            this._renderCards(this._recipesListToDisplay);
+
+            const recipesListToDisplay = this.getRecipesListToDisplay();
+
+            this._renderFiltersOptions(
+              this.getItemsListsToDisplay(recipesListToDisplay)
+            );
+            this._renderCards(recipesListToDisplay);
           }
         };
       }
