@@ -135,11 +135,6 @@ export class RecipesList {
     console.log("Search recipes for", userRequest);
 
     const [searchBarInput, joinedBadges] = userRequest;
-
-    if (searchBarInput.length < 3 && searchBarInput != "") {
-      return this;
-    }
-
     userRequest = `${searchBarInput} ${joinedBadges}`;
 
     let filteredRecipes = new Set(this.recipes);

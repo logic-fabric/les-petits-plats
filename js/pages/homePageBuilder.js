@@ -85,12 +85,14 @@ export class HomePageBuilder {
     };
 
     searchBarInput.oninput = (e) => {
-      const recipesListToDisplay = this.getRecipesListToDisplay();
+      if (searchBarInput.value.length >= 3) {
+        const recipesListToDisplay = this.getRecipesListToDisplay();
 
-      this._renderFiltersOptions(
-        this.getItemsListsToDisplay(recipesListToDisplay)
-      );
-      this._renderCards(recipesListToDisplay);
+        this._renderFiltersOptions(
+          this.getItemsListsToDisplay(recipesListToDisplay)
+        );
+        this._renderCards(recipesListToDisplay);
+      }
     };
 
     searchBarForm.onsubmit = (e) => {
