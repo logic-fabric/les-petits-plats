@@ -80,6 +80,10 @@ export class HomePageBuilder {
 
     searchBarForm.onclick = (e) => e.stopPropagation();
 
+    searchBarInput.onfocus = () => {
+      this._closeAllFiltersExceptClicked();
+    };
+
     searchBarInput.oninput = (e) => {
       const recipesListToDisplay = this.getRecipesListToDisplay();
 
