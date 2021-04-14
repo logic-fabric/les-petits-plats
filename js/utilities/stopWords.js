@@ -20,6 +20,7 @@ export const FRENCH_STOP_WORDS = [
   "comme",
   "comment",
   "dans",
+  "de",
   "des",
   "du",
   "dedans",
