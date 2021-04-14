@@ -56,6 +56,12 @@
     </header>
 
     <main>
+      <!-- Dynamic search result message: -->
+      <aside class="c-message c-message--info" id="message">
+        <span>Aucun résultat</span>
+        <i class="far fa-times-circle"></i>
+      </aside>
+
       <!-- Search bar: -->
       <form class="p-search-bar mh-2" id="search-bar-form" action="">
         <input
@@ -123,6 +129,8 @@
           <ul class="closed" id="ustensil-list"></ul>
         </div>
       </div>
+
+
 
       <!-- Recipe cards added dynamically: -->
       <div class="row-12 has-gutter-xl mt-2" id="cards-wrapper"></div>

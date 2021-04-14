@@ -69,6 +69,27 @@ export class HomePageBuilder {
     this._addSearchWithFiltersEvents();
   }
 
+  _displaySearchResultMessage(recipesList) {
+    const messageAside = document.getElementById("message");
+    const messageSpan = document.querySelector("#message span");
+
+    messageAside.classList.remove("opened");
+
+    let message;
+    const recipesQuantity = recipesList.recipes.length;
+
+    if (recipesQuantity === 0) {
+      message =
+        'Aucune recette ne correspond à votre recherche... Vous pouvez chercher "tarte aux pommes", "poisson", etc.';
+
+      messageSpan.textContent = message;
+
+      messageAside.classList.add("opened");
+
+      this._addCloseMessageEvent();
+    }
+  }
+
   _sizeFilterList(filter) {
     const itemsList = document.getElementById(`${filter}-list`);
     const itemsLines = document.querySelectorAll(`#${filter}-list li`);
@@ -106,6 +127,15 @@ export class HomePageBuilder {
     cardsWrapper.innerHTML = htmlContent;
   }
 
+  _addCloseMessageEvent() {
+    const messageAside = document.getElementById("message");
+    const messageCloseIcon = document.querySelector("#message i");
+
+    messageCloseIcon.onclick = () => {
+      messageAside.classList.remove("opened");
+    };
+  }
+
   _addSearchBarEvents() {
     const searchBarForm = document.getElementById("search-bar-form");
     const searchBarInput = document.getElementById("search-bar-input");
@@ -123,6 +153,7 @@ export class HomePageBuilder {
         this._renderFiltersOptions(
           this.getItemsListsToDisplay(recipesListToDisplay)
         );
+        this._displaySearchResultMessage(recipesListToDisplay);
         this._renderCards(recipesListToDisplay);
       }
     };
@@ -222,6 +253,7 @@ export class HomePageBuilder {
       this._renderFiltersOptions(
         this.getItemsListsToDisplay(recipesListToDisplay)
       );
+      this._displaySearchResultMessage(recipesListToDisplay);
       this._renderCards(recipesListToDisplay);
     };
   }
@@ -268,6 +300,7 @@ export class HomePageBuilder {
             this._renderFiltersOptions(
               this.getItemsListsToDisplay(recipesListToDisplay)
             );
+            this._displaySearchResultMessage(recipesListToDisplay);
             this._renderCards(recipesListToDisplay);
 
             window.scrollTo(0, 0);
