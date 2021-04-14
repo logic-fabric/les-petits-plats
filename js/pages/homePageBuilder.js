@@ -3,7 +3,12 @@
 import { RecipeCard } from "./components/cards.js";
 import { removeAccents } from "../utilities/strings.js";
 
+const BREAKPOINTS = {
+  small: 840,
+  medium: 1200,
+};
 const FILTERS = ["ingredient", "appliance", "ustensil"];
+const ITEMS_LINE_HEIGHT = 39; // for 39px
 
 export class HomePageBuilder {
   constructor(recipesList) {
@@ -44,6 +49,7 @@ export class HomePageBuilder {
     this._addSearchBarEvents();
     this._addOpenFiltersEvents();
     this._addCloseAllFiltersEvent();
+    this._addResizeFiltersListsEvent();
   }
 
   _renderFiltersOptions(itemsLists) {
@@ -59,7 +65,33 @@ export class HomePageBuilder {
       itemsList.innerHTML = htmlContent;
     }
 
+    this._sizeAllFiltersLists();
     this._addSearchWithFiltersEvents();
+  }
+
+  _sizeFilterList(filter) {
+    const itemsList = document.getElementById(`${filter}-list`);
+    const itemsLines = document.querySelectorAll(`#${filter}-list li`);
+
+    const windowWidth = window.innerWidth;
+    const columnsInList =
+      windowWidth < BREAKPOINTS.small
+        ? 1
+        : windowWidth < BREAKPOINTS.medium
+        ? 2
+        : 3;
+
+    const itemsQuantity = itemsLines.length;
+
+    itemsList.style.height = `${
+      Math.ceil(itemsQuantity / columnsInList) * ITEMS_LINE_HEIGHT
+    }px`;
+  }
+
+  _sizeAllFiltersLists() {
+    for (let filter of FILTERS) {
+      this._sizeFilterList(filter);
+    }
   }
 
   _renderCards(recipesList) {
@@ -142,6 +174,8 @@ export class HomePageBuilder {
         filterIcon.classList.toggle("fa-chevron-up");
         itemsList.classList.toggle("closed");
 
+        this._sizeFilterList(filter);
+
         filterInput.focus();
       };
 
@@ -149,6 +183,12 @@ export class HomePageBuilder {
         e.stopPropagation();
       };
     }
+  }
+
+  _addResizeFiltersListsEvent() {
+    window.onresize = () => {
+      this._sizeAllFiltersLists();
+    };
   }
 
   _createFilterBadge(filter, textContent) {
@@ -205,6 +245,7 @@ export class HomePageBuilder {
         );
 
         this._renderFiltersOptions(itemsListsToDisplay);
+        this._sizeFilterList(filter);
       };
 
       filterInput.onsubmit = () => {
@@ -228,6 +269,8 @@ export class HomePageBuilder {
               this.getItemsListsToDisplay(recipesListToDisplay)
             );
             this._renderCards(recipesListToDisplay);
+
+            window.scrollTo(0, 0);
           }
         };
       }

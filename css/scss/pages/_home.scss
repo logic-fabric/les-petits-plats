@@ -29,7 +29,7 @@ $filters-transition-duration: 150ms;
     padding: 1.2 * $grid-2 $grid-2;
     border: none;
 
-    font-size: 2rem;
+    font-size: $grid-3;
 
     background: $neutral-200;
   }
@@ -117,13 +117,16 @@ $filters-transition-duration: 150ms;
         }
 
         @media (min-width: $small-breakpoint) {
-          width: 20 * $grid-2;
+          width: 24 * $grid-2;
           padding: $grid-2 $grid-1;
 
           input {
-            width: 16.5 * $grid-2;
             padding: $grid-1;
           }
+        }
+
+        @media (min-width: $medium-breakpoint) {
+          width: 36 * $grid-2;
         }
       }
     }
@@ -133,11 +136,12 @@ $filters-transition-duration: 150ms;
       flex-direction: column;
       flex-wrap: wrap;
       position: absolute;
-      top: 3.25rem;
+      top: 3.25 * $grid-2;
       left: 0;
       z-index: $z-dropdown;
 
       height: auto;
+      width: 100%;
       border-radius: $grid-sm;
       overflow: hidden;
 
@@ -145,23 +149,39 @@ $filters-transition-duration: 150ms;
 
       transition: opacity $filters-transition-duration;
 
-      &.closed {
-        height: 0;
-
-        opacity: 0;
-      }
-
       li {
-        width: 12rem;
+        width: 17 * $grid-2;
         padding: $grid-1 $grid-2;
         overflow: hidden;
 
         text-overflow: ellipsis;
         white-space: nowrap;
+
+        transition: width $filters-transition-duration - 100ms;
+      }
+
+      li {
+        width: 17 * $grid-2;
+      }
+
+      &.closed {
+        display: hidden;
+
+        height: 0;
+
+        opacity: 0;
+
+        li {
+          width: 0;
+        }
       }
 
       @media (min-width: $small-breakpoint) {
-        top: 4.25rem;
+        top: 4.25 * $grid-2;
+
+        li {
+          width: 12 * $grid-2;
+        }
       }
     }
 
