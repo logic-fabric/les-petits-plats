@@ -24,10 +24,10 @@ export class HomePageBuilder {
   get _userRequest() {
     const searchBarInput = document.getElementById("search-bar-input");
 
-    const userInput = searchBarInput.value.trim();
-    const joinedBadges = this._badgesList.join(" ").trim();
-
-    return [userInput, joinedBadges];
+    return {
+      userInput: searchBarInput.value.trim(),
+      joinedBadges: this._badgesList.join(" ").trim(),
+    };
   }
 
   getRecipesListToDisplay() {
@@ -124,8 +124,8 @@ export class HomePageBuilder {
 
     let htmlContent = "";
 
-    for (let recipe of recipesList.recipes) {
-      htmlContent += new RecipeCard(recipe).html;
+    for (let i = 0; i < recipesList.recipes.length; i++) {
+      htmlContent += new RecipeCard(recipesList.recipes[i], i).html;
     }
 
     cardsWrapper.innerHTML = htmlContent;

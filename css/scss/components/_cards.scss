@@ -3,6 +3,28 @@
   overflow: hidden;
 
   margin: 0 0 $grid-6 0;
+
+  opacity: 0;
+}
+
+@for $i from 0 to 50 {
+  [data-card-id="#{$i}"] {
+    animation: fade-in 500ms ease-out 50ms * $i forwards;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-$grid-2);
+  }
+  25% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .c-card__img {
@@ -30,9 +52,6 @@
   .c-card__description {
     max-height: 7.9rem;
     overflow: hidden;
-  }
-
-  .c-card-ingredients {
   }
 
   p {

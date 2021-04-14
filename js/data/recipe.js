@@ -134,8 +134,7 @@ export class RecipesList {
   search(userRequest) {
     console.log("Search recipes for", userRequest);
 
-    const [searchBarInput, joinedBadges] = userRequest;
-    userRequest = `${searchBarInput} ${joinedBadges}`;
+    userRequest = `${userRequest.userInput} ${userRequest.joinedBadges}`;
 
     let filteredRecipes = new Set(this.recipes);
 
