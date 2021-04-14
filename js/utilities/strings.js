@@ -49,30 +49,24 @@ export function removeStopWords(words) {
 }
 
 export function sortAlphabetically(strings) {
-  const asciiConverter = [];
+  const asciiConvertedStrings = [];
 
   for (let str of strings) {
-    let convertedStr = str
-      .toLowerCase()
-      .replace(/[àä]/g, "a")
-      .replace(/[éèêë]/g, "e")
-      .replace(/[îï]/g, "i")
-      .replace(/[ôö]/g, "o")
-      .replace(/[ùûû]/g, "u");
+    let convertedStr = removeAccents(str);
 
-    asciiConverter.push([str, convertedStr]);
+    asciiConvertedStrings.push([str, convertedStr]);
   }
 
-  asciiConverter.sort((asso1, asso2) => {
-    if (asso1[1] > asso2[1]) return 1;
-    if (asso1[1] < asso2[1]) return -1;
+  asciiConvertedStrings.sort((arr1, arr2) => {
+    if (arr1[1] > arr2[1]) return 1;
+    if (arr1[1] < arr2[1]) return -1;
     return 0;
   });
 
   const sortedStrings = [];
 
-  for (let asso of asciiConverter) {
-    sortedStrings.push(asso[0]);
+  for (let arr of asciiConvertedStrings) {
+    sortedStrings.push(arr[0]);
   }
 
   return sortedStrings;
