@@ -81,13 +81,17 @@ export class HomePageBuilder {
     if (recipesQuantity === 0) {
       message =
         'Aucune recette ne correspond à votre recherche... Vous pouvez chercher "tarte aux pommes", "poisson", etc.';
-
-      messageSpan.textContent = message;
-
-      messageAside.classList.add("opened");
-
-      this._addCloseMessageEvent();
+    } else {
+      message = `${recipesQuantity} recette${
+        recipesQuantity > 1 ? "s" : ""
+      } correspond${recipesQuantity > 1 ? "ent" : ""} à votre recherche.`;
     }
+
+    messageSpan.textContent = message;
+
+    messageAside.classList.add("opened");
+
+    this._addCloseMessageEvent();
   }
 
   _sizeFilterList(filter) {
@@ -147,15 +151,19 @@ export class HomePageBuilder {
     };
 
     searchBarInput.oninput = (e) => {
-      if (searchBarInput.value.length >= 3) {
-        const recipesListToDisplay = this.getRecipesListToDisplay();
+      let recipesListToDisplay;
 
-        this._renderFiltersOptions(
-          this.getItemsListsToDisplay(recipesListToDisplay)
-        );
-        this._displaySearchResultMessage(recipesListToDisplay);
-        this._renderCards(recipesListToDisplay);
+      if (searchBarInput.value.length >= 3) {
+        recipesListToDisplay = this.getRecipesListToDisplay();
+      } else {
+        recipesListToDisplay = this._recipesList;
       }
+
+      this._renderFiltersOptions(
+        this.getItemsListsToDisplay(recipesListToDisplay)
+      );
+      this._displaySearchResultMessage(recipesListToDisplay);
+      this._renderCards(recipesListToDisplay);
     };
 
     searchBarForm.onsubmit = (e) => {
@@ -246,7 +254,7 @@ export class HomePageBuilder {
 
       badgeDiv.remove();
 
-      this._badgesList.splice(textContent);
+      this._badgesList = this._badgesList.filter((elt) => elt != textContent);
 
       const recipesListToDisplay = this.getRecipesListToDisplay();
 
