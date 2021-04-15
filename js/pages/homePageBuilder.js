@@ -69,50 +69,6 @@ export class HomePageBuilder {
     this._addSearchWithFiltersEvents();
   }
 
-  _displaySearchResultMessage(recipesList) {
-    const messageAside = document.getElementById("message");
-    const messageSpan = document.querySelector("#message span");
-
-    messageAside.classList.remove("opened");
-
-    let message;
-    const recipesQuantity = recipesList.recipes.length;
-
-    if (recipesQuantity === 0) {
-      message =
-        'Aucune recette ne correspond à votre recherche... Vous pouvez chercher "tarte aux pommes", "poisson", etc.';
-    } else {
-      message = `${recipesQuantity} recette${
-        recipesQuantity > 1 ? "s" : ""
-      } correspond${recipesQuantity > 1 ? "ent" : ""} à votre recherche.`;
-    }
-
-    messageSpan.textContent = message;
-
-    messageAside.classList.add("opened");
-
-    this._addCloseMessageEvent();
-  }
-
-  _sizeFilterList(filter) {
-    const itemsList = document.getElementById(`${filter}-list`);
-    const itemsLines = document.querySelectorAll(`#${filter}-list li`);
-
-    const windowWidth = window.innerWidth;
-    const columnsInList =
-      windowWidth < BREAKPOINTS.small
-        ? 1
-        : windowWidth < BREAKPOINTS.medium
-        ? 2
-        : 3;
-
-    const itemsQuantity = itemsLines.length;
-
-    itemsList.style.height = `${
-      Math.ceil(itemsQuantity / columnsInList) * ITEMS_LINE_HEIGHT
-    }px`;
-  }
-
   _renderCards(recipesList) {
     const cardsWrapper = document.getElementById("cards-wrapper");
 
@@ -123,47 +79,6 @@ export class HomePageBuilder {
     }
 
     cardsWrapper.innerHTML = htmlContent;
-  }
-
-  _addCloseMessageEvent() {
-    const messageAside = document.getElementById("message");
-    const messageCloseIcon = document.querySelector("#message i");
-
-    messageCloseIcon.onclick = () => {
-      messageAside.classList.remove("opened");
-    };
-  }
-
-  _addSearchBarEvents() {
-    const searchBarForm = document.getElementById("search-bar-form");
-    const searchBarInput = document.getElementById("search-bar-input");
-
-    searchBarForm.onclick = (e) => e.stopPropagation();
-
-    searchBarInput.onfocus = () => {
-      this._closeAllFiltersExceptClicked();
-    };
-
-    searchBarInput.oninput = (e) => {
-      let recipesListToDisplay;
-
-      if (searchBarInput.value.length >= 3) {
-        recipesListToDisplay = this.getRecipesListToDisplay();
-      } else {
-        recipesListToDisplay = this._recipesList;
-      }
-
-      this._renderFiltersOptions(
-        this.getItemsListsToDisplay(recipesListToDisplay)
-      );
-      this._displaySearchResultMessage(recipesListToDisplay);
-      this._renderCards(recipesListToDisplay);
-    };
-
-    searchBarForm.onsubmit = (e) => {
-      e.preventDefault();
-      searchBarInput.blur();
-    };
   }
 
   _closeAllFiltersExceptClicked(clickedFilter) {
@@ -181,59 +96,6 @@ export class HomePageBuilder {
         itemsList.style.height = 0;
       }
     }
-  }
-
-  _addCloseAllFiltersEvent() {
-    const body = document.querySelector("body");
-
-    body.onclick = () => {
-      this._closeAllFiltersExceptClicked();
-    };
-  }
-
-  _addOpenFiltersEvents() {
-    for (let filter of FILTERS) {
-      const filterLabel = document.getElementById(`${filter}-filter-label`);
-      const filterIcon = document.getElementById(`${filter}-filter-icon`);
-      const filterInput = document.getElementById(`${filter}`);
-      const itemsList = document.getElementById(`${filter}-list`);
-
-      filterLabel.onclick = (e) => {
-        e.stopPropagation();
-        e.preventDefault();
-
-        this._closeAllFiltersExceptClicked(filter);
-
-        filterLabel.classList.toggle("clicked");
-        filterIcon.classList.toggle("fa-chevton-down");
-        filterIcon.classList.toggle("fa-chevron-up");
-        itemsList.classList.toggle("closed");
-
-        this._sizeFilterList(filter);
-
-        filterInput.focus();
-      };
-
-      filterInput.onclick = (e) => {
-        e.stopPropagation();
-      };
-    }
-  }
-
-  _resizeOpenedFilter() {
-    const openedItemsList = document.querySelector("ul:not(.closed)");
-
-    if (openedItemsList) {
-      const filter = openedItemsList.getAttribute("data-filter");
-
-      this._sizeFilterList(filter);
-    }
-  }
-
-  _addResizeOpenedFilterListsEvent() {
-    window.onresize = () => {
-      this._resizeOpenedFilter();
-    };
   }
 
   _createFilterBadge(filter, textContent) {
@@ -269,6 +131,144 @@ export class HomePageBuilder {
       );
       this._displaySearchResultMessage(recipesListToDisplay);
       this._renderCards(recipesListToDisplay);
+    };
+  }
+
+  _displaySearchResultMessage(recipesList) {
+    const messageAside = document.getElementById("message");
+    const messageSpan = document.querySelector("#message span");
+
+    messageAside.classList.remove("opened");
+
+    let message;
+    const recipesQuantity = recipesList.recipes.length;
+
+    if (recipesQuantity === 0) {
+      message =
+        'Aucune recette ne correspond à votre recherche... Vous pouvez chercher "tarte aux pommes", "poisson", etc.';
+    } else {
+      message = `${recipesQuantity} recette${
+        recipesQuantity > 1 ? "s" : ""
+      } correspond${recipesQuantity > 1 ? "ent" : ""} à votre recherche.`;
+    }
+
+    messageSpan.textContent = message;
+
+    messageAside.classList.add("opened");
+
+    this._addCloseMessageEvent();
+  }
+
+  _resizeOpenedFilter() {
+    const openedItemsList = document.querySelector("ul:not(.closed)");
+
+    if (openedItemsList) {
+      const filter = openedItemsList.getAttribute("data-filter");
+
+      this._sizeFilterList(filter);
+    }
+  }
+
+  _sizeFilterList(filter) {
+    const itemsList = document.getElementById(`${filter}-list`);
+    const itemsLines = document.querySelectorAll(`#${filter}-list li`);
+
+    const windowWidth = window.innerWidth;
+    const columnsInList =
+      windowWidth < BREAKPOINTS.small
+        ? 1
+        : windowWidth < BREAKPOINTS.medium
+        ? 2
+        : 3;
+
+    const itemsQuantity = itemsLines.length;
+
+    itemsList.style.height = `${
+      Math.ceil(itemsQuantity / columnsInList) * ITEMS_LINE_HEIGHT
+    }px`;
+  }
+
+  _addCloseAllFiltersEvent() {
+    const body = document.querySelector("body");
+
+    body.onclick = () => {
+      this._closeAllFiltersExceptClicked();
+    };
+  }
+
+  _addCloseMessageEvent() {
+    const messageAside = document.getElementById("message");
+    const messageCloseIcon = document.querySelector("#message i");
+
+    messageCloseIcon.onclick = () => {
+      messageAside.classList.remove("opened");
+    };
+  }
+
+  _addOpenFiltersEvents() {
+    for (let filter of FILTERS) {
+      const filterLabel = document.getElementById(`${filter}-filter-label`);
+      const filterIcon = document.getElementById(`${filter}-filter-icon`);
+      const filterInput = document.getElementById(`${filter}`);
+      const itemsList = document.getElementById(`${filter}-list`);
+
+      filterLabel.onclick = (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+
+        this._closeAllFiltersExceptClicked(filter);
+
+        filterLabel.classList.toggle("clicked");
+        filterIcon.classList.toggle("fa-chevton-down");
+        filterIcon.classList.toggle("fa-chevron-up");
+        itemsList.classList.toggle("closed");
+
+        this._sizeFilterList(filter);
+
+        filterInput.focus();
+      };
+
+      filterInput.onclick = (e) => {
+        e.stopPropagation();
+      };
+    }
+  }
+
+  _addResizeOpenedFilterListsEvent() {
+    window.onresize = () => {
+      this._resizeOpenedFilter();
+    };
+  }
+
+  _addSearchBarEvents() {
+    const searchBarForm = document.getElementById("search-bar-form");
+    const searchBarInput = document.getElementById("search-bar-input");
+
+    searchBarForm.onclick = (e) => e.stopPropagation();
+
+    searchBarInput.onfocus = () => {
+      this._closeAllFiltersExceptClicked();
+    };
+
+    searchBarInput.oninput = (e) => {
+      let recipesListToDisplay;
+
+      if (searchBarInput.value.length >= 3) {
+        recipesListToDisplay = this.getRecipesListToDisplay();
+      } else {
+        recipesListToDisplay = this._recipesList;
+      }
+
+      this._renderFiltersOptions(
+        this.getItemsListsToDisplay(recipesListToDisplay)
+      );
+      this._displaySearchResultMessage(recipesListToDisplay);
+      this._renderCards(recipesListToDisplay);
+    };
+
+    searchBarForm.onsubmit = (e) => {
+      e.preventDefault();
+      searchBarInput.blur();
     };
   }
 
