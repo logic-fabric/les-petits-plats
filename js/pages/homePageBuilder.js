@@ -49,7 +49,7 @@ export class HomePageBuilder {
     this._addSearchBarEvents();
     this._addOpenFiltersEvents();
     this._addCloseAllFiltersEvent();
-    this._addResizeFiltersListsEvent();
+    this._addResizeOpenedFilterListsEvent();
   }
 
   _renderFiltersOptions(itemsLists) {
@@ -65,7 +65,7 @@ export class HomePageBuilder {
       itemsList.innerHTML = htmlContent;
     }
 
-    this._sizeAllFiltersLists();
+    this._resizeOpenedFilter();
     this._addSearchWithFiltersEvents();
   }
 
@@ -111,12 +111,6 @@ export class HomePageBuilder {
     itemsList.style.height = `${
       Math.ceil(itemsQuantity / columnsInList) * ITEMS_LINE_HEIGHT
     }px`;
-  }
-
-  _sizeAllFiltersLists() {
-    for (let filter of FILTERS) {
-      this._sizeFilterList(filter);
-    }
   }
 
   _renderCards(recipesList) {
@@ -183,6 +177,8 @@ export class HomePageBuilder {
         filterIcon.classList.add("fa-chevron-down");
         filterIcon.classList.remove("fa-chevron-up");
         itemsList.classList.add("closed");
+
+        itemsList.style.height = 0;
       }
     }
   }
@@ -224,9 +220,19 @@ export class HomePageBuilder {
     }
   }
 
-  _addResizeFiltersListsEvent() {
+  _resizeOpenedFilter() {
+    const openedItemsList = document.querySelector("ul:not(.closed)");
+
+    if (openedItemsList) {
+      const filter = openedItemsList.getAttribute("data-filter");
+
+      this._sizeFilterList(filter);
+    }
+  }
+
+  _addResizeOpenedFilterListsEvent() {
     window.onresize = () => {
-      this._sizeAllFiltersLists();
+      this._resizeOpenedFilter();
     };
   }
 
