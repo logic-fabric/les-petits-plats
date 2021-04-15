@@ -166,10 +166,16 @@ export class HomePageBuilder {
     if (recipesQuantity === 0) {
       message =
         'Aucune recette ne correspond à votre recherche... Vous pouvez chercher "tarte aux pommes", "poisson", etc.';
+
+      messageAside.classList.remove("c-message--info");
+      messageAside.classList.add("c-message--warning");
     } else {
       message = `${recipesQuantity} recette${
         recipesQuantity > 1 ? "s" : ""
       } correspond${recipesQuantity > 1 ? "ent" : ""} à votre recherche.`;
+
+      messageAside.classList.remove("c-message--warning");
+      messageAside.classList.add("c-message--info");
     }
 
     messageSpan.textContent = message;

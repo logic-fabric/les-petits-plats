@@ -32,4 +32,10 @@
 
     background: $info-100;
   }
+
+  &--warning {
+    color: $warning-900;
+
+    background: $warning-100;
+  }
 }
