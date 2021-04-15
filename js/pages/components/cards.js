@@ -35,8 +35,8 @@ export class RecipeCard {
 
         <div class="c-card__body">
           <h2 class="c-card__title">
-            <span>${this._recipe.name}</span>
-            <span>
+            <span class="name">${this._recipe.name}</span>
+            <span class="duration">
               <i class="far fa-clock"></i>
               ${this._recipe.time} min
             </span>
