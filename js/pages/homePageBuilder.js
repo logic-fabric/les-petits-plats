@@ -124,12 +124,31 @@ export class HomePageBuilder {
 
       this._badgesList = this._badgesList.filter((elt) => elt != textContent);
 
-      const recipesListToDisplay = this.getRecipesListToDisplay();
+      let recipesListToDisplay;
+
+      if (
+        this._userRequest.userInput.length < 3 &&
+        this._userRequest.joinedBadges === ""
+      ) {
+        recipesListToDisplay = this._recipesList;
+
+        const messageAside = document.getElementById("message");
+
+        messageAside.classList.remove("opened");
+      } else {
+        recipesListToDisplay = this.getRecipesListToDisplay();
+
+        this._displaySearchResultMessage(recipesListToDisplay);
+      }
 
       this._renderFiltersOptions(
         this.getItemsListsToDisplay(recipesListToDisplay)
       );
-      this._displaySearchResultMessage(recipesListToDisplay);
+      this._renderCards(recipesListToDisplay);
+
+      this._renderFiltersOptions(
+        this.getItemsListsToDisplay(recipesListToDisplay)
+      );
       this._renderCards(recipesListToDisplay);
     };
   }
@@ -255,14 +274,19 @@ export class HomePageBuilder {
 
       if (searchBarInput.value.length >= 3) {
         recipesListToDisplay = this.getRecipesListToDisplay();
+
+        this._displaySearchResultMessage(recipesListToDisplay);
       } else {
         recipesListToDisplay = this._recipesList;
+
+        const messageAside = document.getElementById("message");
+
+        messageAside.classList.remove("opened");
       }
 
       this._renderFiltersOptions(
         this.getItemsListsToDisplay(recipesListToDisplay)
       );
-      this._displaySearchResultMessage(recipesListToDisplay);
       this._renderCards(recipesListToDisplay);
     };
 
