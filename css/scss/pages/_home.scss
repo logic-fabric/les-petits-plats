@@ -258,3 +258,42 @@ $filters-transition-duration: 150ms;
     }
   }
 }
+
+#up-button {
+  display: block;
+  position: sticky;
+  bottom: $grid-2;
+  z-index: $z-special-case;
+
+  width: $grid-7;
+  height: $grid-7;
+  margin: 0 $grid-1 0 auto;
+  border: none;
+  border-radius: 50%;
+  box-shadow: $grid-xs $grid-1 $grid-1 $neutral-600;
+  outline: none;
+
+  color: white;
+  font-size: $grid-5;
+  text-align: right;
+
+  background: $info-500;
+  transform: translateY(5rem);
+  transition: background-color 250ms, transform 300ms;
+
+  cursor: pointer;
+
+  i {
+    display: block;
+
+    padding: $grid-sm;
+  }
+
+  &:hover {
+    background: darken($info-500, 10);
+  }
+
+  &.displayed {
+    transform: translateY(0);
+  }
+}

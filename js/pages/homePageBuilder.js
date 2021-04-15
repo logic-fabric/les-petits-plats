@@ -50,6 +50,7 @@ export class HomePageBuilder {
     this._addOpenFiltersEvents();
     this._addCloseAllFiltersEvent();
     this._addResizeOpenedFilterListsEvent();
+    this._addUpButtonEvent();
   }
 
   _renderFiltersOptions(itemsLists) {
@@ -346,5 +347,24 @@ export class HomePageBuilder {
         };
       }
     }
+  }
+
+  _addUpButtonEvent() {
+    const upButton = document.getElementById("up-button");
+    const main = document.querySelector("main");
+
+    window.addEventListener("scroll", () => {
+      const mainRect = main.getBoundingClientRect();
+
+      if (mainRect.top < 0) {
+        upButton.classList.add("displayed");
+      } else {
+        upButton.classList.remove("displayed");
+      }
+    });
+
+    upButton.onclick = () => {
+      window.scroll(0, 0);
+    };
   }
 }
