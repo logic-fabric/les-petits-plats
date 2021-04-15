@@ -28,14 +28,17 @@
 }
 
 .c-card__img {
-  height: 11rem;
+  height: 11 * $grid-2;
 
   background: $neutral-400;
 }
 
 .c-card__body {
-  height: 14rem;
+  position: relative;
+
+  height: 14 * $grid-2;
   padding: $grid-2 $grid-3;
+  overflow: hidden;
 
   background: $neutral-200;
 
@@ -65,7 +68,6 @@
 
   .c-card__ingredients,
   .c-card__description {
-    max-height: 7.9rem;
     overflow: hidden;
   }
 
@@ -77,7 +79,30 @@
 
     font-size: $sm-size;
     text-overflow: ellipsis;
-    -webkit-line-clamp: 7;
+    -webkit-line-clamp: 8;
     -webkit-box-orient: vertical;
+  }
+
+  &::before,
+  &::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+
+    background: $neutral-200;
+
+    content: "";
+  }
+
+  &::before {
+    height: $grid-5;
+
+    filter: blur($grid-1);
+  }
+
+  &::after {
+    height: $grid-3;
   }
 }
