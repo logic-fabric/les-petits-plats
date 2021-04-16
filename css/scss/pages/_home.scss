@@ -270,14 +270,14 @@ $filters-transition-duration: 150ms;
   margin: 0 $grid-1 0 auto;
   border: none;
   border-radius: 50%;
-  box-shadow: $grid-xs $grid-1 $grid-1 $neutral-600;
+  box-shadow: 0 $grid-sm $grid-1 $neutral-900;
   outline: none;
 
   color: white;
   font-size: $grid-5;
   text-align: right;
 
-  background: $info-500;
+  background: $warning-500;
   transform: translateY(5rem);
   transition: background-color 250ms, transform 300ms;
 
@@ -290,7 +290,7 @@ $filters-transition-duration: 150ms;
   }
 
   &:hover {
-    background: darken($info-500, 10);
+    background: darken($warning-500, 10);
   }
 
   &.displayed {
