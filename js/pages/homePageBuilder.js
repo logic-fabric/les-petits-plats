@@ -283,6 +283,13 @@ export class HomePageBuilder {
         recipesListToDisplay = this.getRecipesListToDisplay();
 
         this._displaySearchResultMessage(recipesListToDisplay);
+      } else if (this._badgesList.length > 0) {
+        recipesListToDisplay = this._recipesList.search({
+          userInput: "",
+          joinedBadges: this._userRequest.joinedBadges,
+        });
+
+        this._displaySearchResultMessage(recipesListToDisplay);
       } else {
         recipesListToDisplay = this._recipesList;
 
