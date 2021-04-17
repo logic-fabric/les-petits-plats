@@ -165,8 +165,6 @@ $filters-transition-duration: 150ms;
       }
 
       &.closed {
-        display: hidden;
-
         height: 0;
 
         opacity: 0;
