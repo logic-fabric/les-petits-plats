@@ -1,15 +1,3 @@
-/* ===========
-   FONT WEIGHT
-   =========== */
-
-$weights: 300, 400, 700;
-
-@each $weight in $weights {
-  .fw-#{$weight} {
-    font-weight: #{$weight};
-  }
-}
-
 /* ==========
    TEXT ALIGN
    ========== */
