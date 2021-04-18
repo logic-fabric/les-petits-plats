@@ -1,11 +1,19 @@
 "use strict";
 
 export class RecipeCard {
+  /**
+   * @constructs
+   * @param {Recipe} recipe
+   * @param {number} cardNumber
+   */
   constructor(recipe, cardNumber) {
     this._recipe = recipe;
     this._cardNumber = cardNumber;
   }
 
+  /**
+   * @returns {string}
+   */
   _ingredientsHtml() {
     let htmlContent = "";
 
@@ -16,21 +24,23 @@ export class RecipeCard {
           : `&nbsp;: ${ingredient.quantity}`
         : "";
 
-      htmlContent += (
-        `<p>
+      htmlContent += `<p>
           <strong>
             ${ingredient.ingredient}
           </strong> ${ingredientQuantity}
-        </p>`
-      );
+        </p>`;
     }
 
     return htmlContent;
   }
 
+  /**
+   * @returns {string}
+   */
   get html() {
-    return (
-      `<article class="c-card lg4 md6 sm12" data-card-id="${this._cardNumber}">
+    return `<article class="c-card lg4 md6 sm12" data-card-id="${
+      this._cardNumber
+    }">
         <div class="c-card__img"></div>
 
         <div class="c-card__body">
@@ -52,7 +62,6 @@ export class RecipeCard {
             </div>
           </div>
         </div>
-      </article>`
-    );
+      </article>`;
   }
 }

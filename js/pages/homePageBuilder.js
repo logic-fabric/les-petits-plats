@@ -11,6 +11,9 @@ const FILTERS = ["ingredient", "appliance", "ustensil"];
 const ITEMS_LINE_HEIGHT = 39; // for 39px
 
 export class HomePageBuilder {
+  /**
+   * @param {RecipesList} recipesList
+   */
   constructor(recipesList) {
     this._recipesList = recipesList;
     this._badgesList = [];
@@ -21,6 +24,9 @@ export class HomePageBuilder {
     };
   }
 
+  /**
+   * @returns {Object}
+   */
   get _userRequest() {
     const searchBarInput = document.getElementById("search-bar-input");
 
@@ -30,10 +36,17 @@ export class HomePageBuilder {
     };
   }
 
+  /**
+   * @returns {RecipesList}
+   */
   getRecipesListToDisplay() {
     return this._recipesList.search(this._userRequest);
   }
 
+  /**
+   * @param {RecipesList} recipesList
+   * @returns {Object}
+   */
   getItemsListsToDisplay(recipesList) {
     return {
       ingredient: recipesList.sortedIngredients,
@@ -42,6 +55,9 @@ export class HomePageBuilder {
     };
   }
 
+  /**
+   * Build page HTML and add events listeners.
+   */
   render() {
     this._renderFiltersOptions(this._filtersItems);
     this._renderCards(this._recipesList);
@@ -53,6 +69,10 @@ export class HomePageBuilder {
     this._addUpButtonEvent();
   }
 
+  /**
+   * Build HTML of ingredients/appliances/ustensils lists and add asociated events listeners.
+   * @param {Array.string} itemsLists
+   */
   _renderFiltersOptions(itemsLists) {
     for (let filter of FILTERS) {
       const itemsList = document.getElementById(`${filter}-list`);
@@ -70,6 +90,10 @@ export class HomePageBuilder {
     this._addSearchWithFiltersEvents();
   }
 
+  /**
+   * Build HTML of all displayed recipes cards.
+   * @param {RecipesList} recipesList
+   */
   _renderCards(recipesList) {
     const cardsWrapper = document.getElementById("cards-wrapper");
 
@@ -82,6 +106,9 @@ export class HomePageBuilder {
     cardsWrapper.innerHTML = htmlContent;
   }
 
+  /**
+   * @param {string} clickedFilter
+   */
   _closeAllFiltersExceptClicked(clickedFilter) {
     for (let filter of FILTERS) {
       if (filter !== clickedFilter) {
@@ -99,6 +126,11 @@ export class HomePageBuilder {
     }
   }
 
+  /**
+   * Build badge HTML and add closing event listener.
+   * @param {string} filter
+   * @param {string} textContent
+   */
   _createFilterBadge(filter, textContent) {
     const filterBadgesWrapper = document.getElementById(
       `${filter}-badges-wrapper`
@@ -154,6 +186,9 @@ export class HomePageBuilder {
     };
   }
 
+  /**
+   * @param {RecipesList} recipesList
+   */
   _displaySearchResultMessage(recipesList) {
     const messageAside = document.getElementById("message");
     const messageSpan = document.querySelector("#message span");
@@ -185,6 +220,9 @@ export class HomePageBuilder {
     this._addCloseMessageEvent();
   }
 
+  /**
+   * Resize opened ingredients, appliances or ustensils list.
+   */
   _resizeOpenedFilter() {
     const openedItemsList = document.querySelector("ul:not(.closed)");
 
@@ -195,6 +233,10 @@ export class HomePageBuilder {
     }
   }
 
+  /**
+   * Display ingredients, appliances or ustensils list on 1, 2 or 3 columns depending of window width.
+   * @param {string} filter
+   */
   _sizeFilterList(filter) {
     const itemsList = document.getElementById(`${filter}-list`);
     const itemsLines = document.querySelectorAll(`#${filter}-list li`);
@@ -214,6 +256,9 @@ export class HomePageBuilder {
     }px`;
   }
 
+  /**
+   * Close all ingredients/appliances/ustensils lists.
+   */
   _addCloseAllFiltersEvent() {
     const body = document.querySelector("body");
 
@@ -222,6 +267,9 @@ export class HomePageBuilder {
     };
   }
 
+  /**
+   * Close message when clicking on close icon.
+   */
   _addCloseMessageEvent() {
     const messageAside = document.getElementById("message");
     const messageCloseIcon = document.querySelector("#message i");
@@ -231,6 +279,7 @@ export class HomePageBuilder {
     };
   }
 
+  /** Open ingredients/appliances/ustensils list when clicking on filter label. */
   _addOpenFiltersEvents() {
     for (let filter of FILTERS) {
       const filterLabel = document.getElementById(`${filter}-filter-label`);
@@ -260,12 +309,18 @@ export class HomePageBuilder {
     }
   }
 
+  /**
+   * Resize opened ingredients/appliances/ustensils list when window is resized.
+   */
   _addResizeOpenedFilterListsEvent() {
     window.onresize = () => {
       this._resizeOpenedFilter();
     };
   }
 
+  /**
+   * Search recipes associated to user input and refresh associated recipes cards and ingredients/appliances/ustensils lists.
+   */
   _addSearchBarEvents() {
     const searchBarForm = document.getElementById("search-bar-form");
     const searchBarInput = document.getElementById("search-bar-input");
@@ -310,6 +365,9 @@ export class HomePageBuilder {
     };
   }
 
+  /**
+   * Refresh ingredients/appliances/ustensils lists when user enter an input in filter or click on an item of the lists.
+   */
   _addSearchWithFiltersEvents() {
     for (let filter of FILTERS) {
       const filterInput = document.getElementById(`${filter}`);
@@ -362,6 +420,9 @@ export class HomePageBuilder {
     }
   }
 
+  /**
+   * Make "up-button" appears after some scrolling and move to the top of the page when clicking on this "up-button".
+   */
   _addUpButtonEvent() {
     const upButton = document.getElementById("up-button");
     const main = document.querySelector("main");
