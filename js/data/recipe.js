@@ -8,6 +8,17 @@ import {
 } from "../utilities/strings.js";
 
 export class Recipe {
+  /**
+   * @constructs
+   * @param {number} id
+   * @param {string} name
+   * @param {number} servings
+   * @param {Array.Object} ingredients
+   * @param {number} time
+   * @param {string} description
+   * @param {string} appliance
+   * @param {Array.string} ustensils
+   */
   constructor(
     id,
     name,
@@ -28,14 +39,23 @@ export class Recipe {
     this.ustensils = ustensils;
   }
 
+  /**
+   * @return {string}
+   */
   get applianceNameWithoutAccent() {
     return removeAccents(this.appliance);
   }
 
+  /**
+   * @returns {string}
+   */
   get descriptionWithoutAccent() {
     return removeAccents(this.description);
   }
 
+  /**
+   * @returns {string}
+   */
   get joinedIngredientsWithoutAccent() {
     const ingredientsList = [];
 
@@ -46,10 +66,16 @@ export class Recipe {
     return ingredientsList.join(" ");
   }
 
+  /**
+   * @returns {string}
+   */
   get nameWithoutAccent() {
     return removeAccents(this.name);
   }
 
+  /**
+   * @returns {string}
+   */
   get joinedUstensilsWithoutAccent() {
     const ustensilsList = [];
 
@@ -62,23 +88,40 @@ export class Recipe {
 }
 
 export class RecipesList {
+  /**
+   * @constructs
+   * @param {Array.Recipe} recipes
+   */
   constructor(recipes) {
     this.recipes = recipes;
     this._sortByName();
   }
 
+  /**
+   * @returns {Array.string}
+   */
   get sortedAppliances() {
     return sortAlphabetically(this._collectAppliances());
   }
 
+  /**
+   * @returns {Array.string}
+   */
   get sortedIngredients() {
     return sortAlphabetically(this._collectIngredients());
   }
 
+  /**
+   * @returns {Array.string}
+   */
   get sortedUstensils() {
     return sortAlphabetically(this._collectUstensils());
   }
 
+  /**
+   * Name sorting adapted to french language (accents handling)
+   * @returns {Array.string}
+   */
   _sortByName() {
     return this.recipes.sort((r1, r2) => {
       const name1 = r1.name.toLowerCase();
@@ -92,6 +135,9 @@ export class RecipesList {
     });
   }
 
+  /**
+   * @returns {Array.string}
+   */
   _collectAppliances() {
     const appliances = new Set();
 
@@ -102,6 +148,9 @@ export class RecipesList {
     return [...appliances];
   }
 
+  /**
+   * @returns {Array.string}
+   */
   _collectIngredients() {
     const ingredients = new Set();
 
@@ -114,6 +163,9 @@ export class RecipesList {
     return [...ingredients];
   }
 
+  /**
+   * @returns {Array.string}
+   */
   _collectUstensils() {
     const ustensils = new Set();
 
@@ -128,7 +180,7 @@ export class RecipesList {
 
   /**
    * Search recipes corresponding to the input in search bar and active badges.
-   * @param {Array.string} userRequest - [search bar input, joined badges]
+   * @param {Object} userRequest
    * @returns {RecipesList}
    */
   search(userRequest) {
