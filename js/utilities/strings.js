@@ -8,6 +8,10 @@ for (let word of FRENCH_STOP_WORDS) {
   STOP_WORDS.push(removeAccents(word));
 }
 
+/**
+ * @param {Array.string} words
+ * @returns {Array.string}
+ */
 function trimWords(words) {
   const trimmeddWords = [];
 
@@ -18,10 +22,18 @@ function trimWords(words) {
   return trimmeddWords;
 }
 
+/**
+ * @param {string} str
+ * @returns {string}
+ */
 export function capitalizeFirstChar(str) {
   return str[0].toUpperCase() + str.slice(1);
 }
 
+/**
+ * @param {string} string
+ * @returns {string}
+ */
 export function removeAccents(string) {
   return string
     .toLowerCase()
@@ -33,6 +45,11 @@ export function removeAccents(string) {
     .replace(/[ùûû]/g, "u");
 }
 
+/**
+ * Trim and remove accentued characters in all words, then remove non significant words (stop words).
+ * @param {Array.string} words
+ * @returns {Array.string}
+ */
 export function removeStopWords(words) {
   const trimmedWords = trimWords(words);
   const filteredWords = [];
@@ -48,16 +65,21 @@ export function removeStopWords(words) {
   return filteredWords;
 }
 
+/**
+ * Sorting method adapted to accentued french words.
+ * @param {Array.string} strings
+ * @returns {Array.string}
+ */
 export function sortAlphabetically(strings) {
-  const asciiConvertedStrings = [];
+  const nonAccentuatedStrings = [];
 
   for (let str of strings) {
-    let convertedStr = removeAccents(str);
+    let nonAccentuatedStr = removeAccents(str);
 
-    asciiConvertedStrings.push([str, convertedStr]);
+    nonAccentuatedStrings.push([str, nonAccentuatedStr]);
   }
 
-  asciiConvertedStrings.sort((arr1, arr2) => {
+  nonAccentuatedStrings.sort((arr1, arr2) => {
     if (arr1[1] > arr2[1]) return 1;
     if (arr1[1] < arr2[1]) return -1;
     return 0;
@@ -65,7 +87,7 @@ export function sortAlphabetically(strings) {
 
   const sortedStrings = [];
 
-  for (let arr of asciiConvertedStrings) {
+  for (let arr of nonAccentuatedStrings) {
     sortedStrings.push(arr[0]);
   }
 
