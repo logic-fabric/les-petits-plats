@@ -193,6 +193,8 @@ export class RecipesList {
     const words = userRequest.split(" ");
     const keywords = removeStopWords(words);
 
+    let filteredRecipes = new Set(this.recipes);
+
     for (let keyword of keywords) {
       // find all recipes containing this keyword:
       const keywordRecipes = new Set();
