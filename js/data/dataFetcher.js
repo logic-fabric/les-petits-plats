@@ -1,5 +1,6 @@
 "use strict";
 
+import { removeStopWords } from "../utilities/strings.js";
 import { Recipe, RecipesList } from "./recipe.js";
 
 export class DataFetcher {
@@ -34,4 +35,31 @@ export class DataFetcher {
 
     return new RecipesList(recipes);
   }
+}
+
+/**
+ * Return an object associating all potential matching keyword with the set of recipes containing this keyword.
+ * @param {RecipesList} recipesList
+ * @returns {Object}
+ */
+export function buildHashTableForSearchingRecipes(recipesList) {
+  const hashTableForSearchingRecipes = {};
+
+  for (let recipe of recipesList.recipes) {
+    let recipeWords = `${recipe.nameWithoutAccent} ${recipe.joinedIngredientsWithoutAccent} ${recipe.applianceNameWithoutAccent} ${recipe.joinedUstensilsWithoutAccent} ${recipe.descriptionWithoutAccent}`;
+
+    recipeWords = recipeWords.split(" ");
+
+    const recipeKeywords = removeStopWords(recipeWords);
+
+    for (let keyword of recipeKeywords) {
+      if (keyword in hashTableForSearchingRecipes) {
+        hashTableForSearchingRecipes[keyword].add(recipe);
+      } else {
+        hashTableForSearchingRecipes[keyword] = new Set([recipe]);
+      }
+    }
+  }
+
+  return hashTableForSearchingRecipes;
 }
