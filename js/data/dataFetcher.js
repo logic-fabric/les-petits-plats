@@ -53,10 +53,14 @@ export function buildHashTableForSearchingRecipes(recipesList) {
     const recipeKeywords = removeStopWords(recipeWords);
 
     for (let keyword of recipeKeywords) {
-      if (keyword in hashTableForSearchingRecipes) {
-        hashTableForSearchingRecipes[keyword].add(recipe);
-      } else {
-        hashTableForSearchingRecipes[keyword] = new Set([recipe]);
+      for (let i = 1; i <= keyword.length; i++) {
+        const troncatedKeyword = keyword.slice(0, i);
+
+        if (troncatedKeyword in hashTableForSearchingRecipes) {
+          hashTableForSearchingRecipes[troncatedKeyword].add(recipe);
+        } else {
+          hashTableForSearchingRecipes[troncatedKeyword] = new Set([recipe]);
+        }
       }
     }
   }
