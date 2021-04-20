@@ -9,3 +9,6 @@ Le rendu de ce code est accessible sur cette [GitHub Page dédiée](https://logi
 ## Algorithmes de recherche
 
 ![algorithme 1](./doc/algorithm-1.png)
+
+
+![algorithme 2](./doc/algorithm-2.png)
