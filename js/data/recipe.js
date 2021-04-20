@@ -2,7 +2,7 @@
 
 import {
   capitalizeFirstChar,
-  removeAccents,
+  keepOnlyLettersAndRemoveAccents,
   removeStopWords,
   sortAlphabetically,
 } from "../utilities/strings.js";
@@ -43,14 +43,14 @@ export class Recipe {
    * @return {string}
    */
   get applianceNameWithoutAccent() {
-    return removeAccents(this.appliance);
+    return keepOnlyLettersAndRemoveAccents(this.appliance);
   }
 
   /**
    * @returns {string}
    */
   get descriptionWithoutAccent() {
-    return removeAccents(this.description);
+    return keepOnlyLettersAndRemoveAccents(this.description);
   }
 
   /**
@@ -60,7 +60,7 @@ export class Recipe {
     const ingredientsList = [];
 
     for (let item of this.ingredients) {
-      ingredientsList.push(removeAccents(item.ingredient));
+      ingredientsList.push(keepOnlyLettersAndRemoveAccents(item.ingredient));
     }
 
     return ingredientsList.join(" ");
@@ -70,7 +70,7 @@ export class Recipe {
    * @returns {string}
    */
   get nameWithoutAccent() {
-    return removeAccents(this.name);
+    return keepOnlyLettersAndRemoveAccents(this.name);
   }
 
   /**
@@ -80,7 +80,7 @@ export class Recipe {
     const ustensilsList = [];
 
     for (let ustensil of this.ustensils) {
-      ustensilsList.push(removeAccents(ustensil));
+      ustensilsList.push(keepOnlyLettersAndRemoveAccents(ustensil));
     }
 
     return ustensilsList.join(" ");
@@ -197,7 +197,7 @@ export class RecipesList {
       // find all recipes containing this keyword:
       const keywordRecipes = new Set();
 
-      keyword = removeAccents(keyword);
+      keyword = keepOnlyLettersAndRemoveAccents(keyword);
 
       for (let recipe of this.recipes) {
         if (

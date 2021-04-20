@@ -1,7 +1,7 @@
 "use strict";
 
 import { RecipeCard } from "./components/cards.js";
-import { removeAccents } from "../utilities/strings.js";
+import { keepOnlyLettersAndRemoveAccents } from "../utilities/strings.js";
 
 const BREAKPOINTS = {
   small: 840,
@@ -383,7 +383,9 @@ export class HomePageBuilder {
         itemsListsToDisplay[filter] = itemsListsToDisplay[
           filter
         ].filter((item) =>
-          removeAccents(item).startsWith(removeAccents(filterInput.value))
+          keepOnlyLettersAndRemoveAccents(item).startsWith(
+            keepOnlyLettersAndRemoveAccents(filterInput.value)
+          )
         );
 
         this._renderFiltersOptions(itemsListsToDisplay);
