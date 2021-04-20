@@ -5,7 +5,7 @@ import { FRENCH_STOP_WORDS } from "./stopWords.js";
 const STOP_WORDS = [];
 
 for (let word of FRENCH_STOP_WORDS) {
-  STOP_WORDS.push(removeAccents(word));
+  STOP_WORDS.push(keepOnlyLettersAndRemoveAccents(word));
 }
 
 /**
@@ -34,10 +34,13 @@ export function capitalizeFirstChar(str) {
  * @param {string} string
  * @returns {string}
  */
-export function removeAccents(string) {
+export function keepOnlyLettersAndRemoveAccents(string) {
   return string
     .toLowerCase()
-    .replace(/[àä]/g, "a")
+    .replace(/[.,;:!\?\*"()°]/g,"")
+    .replace(/[']/g, " ")
+    .replace(/[\d]/g, "")
+    .replace(/[àäâ]/g, "a")
     .replace(/[ç]/g, "c")
     .replace(/[éèêë]/g, "e")
     .replace(/[îï]/g, "i")
@@ -55,7 +58,7 @@ export function removeStopWords(words) {
   const filteredWords = [];
 
   for (let word of trimmedWords) {
-    let wordWithoutAccent = removeAccents(word);
+    let wordWithoutAccent = keepOnlyLettersAndRemoveAccents(word);
 
     if (word.length > 1 && !STOP_WORDS.includes(wordWithoutAccent)) {
       filteredWords.push(word);
@@ -74,7 +77,7 @@ export function sortAlphabetically(strings) {
   const nonAccentuatedStrings = [];
 
   for (let str of strings) {
-    let nonAccentuatedStr = removeAccents(str);
+    let nonAccentuatedStr = keepOnlyLettersAndRemoveAccents(str);
 
     nonAccentuatedStrings.push([str, nonAccentuatedStr]);
   }
