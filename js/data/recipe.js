@@ -181,6 +181,7 @@ export class RecipesList {
   /**
    * Search recipes corresponding to the input in search bar and active badges.
    * @param {Object} userRequest
+   * @param {Object} hashTableForSearchingRecipes
    * @returns {RecipesList}
    */
   search(userRequest, hashTableForSearchingRecipes) {
