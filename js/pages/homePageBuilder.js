@@ -1,7 +1,7 @@
 "use strict";
 
 import { RecipeCard } from "./components/cards.js";
-import { removeAccents } from "../utilities/strings.js";
+import { keepOnlyLettersAndRemoveAccents } from "../utilities/strings.js";
 
 const BREAKPOINTS = {
   small: 840,
@@ -14,8 +14,9 @@ export class HomePageBuilder {
   /**
    * @param {RecipesList} recipesList
    */
-  constructor(recipesList) {
+  constructor(recipesList, hashTableForSearchingRecipes) {
     this._recipesList = recipesList;
+    this._hashTableForSearchingRecipes = hashTableForSearchingRecipes;
     this._badgesList = [];
     this._filtersItems = {
       ingredient: this._recipesList.sortedIngredients,
@@ -40,7 +41,10 @@ export class HomePageBuilder {
    * @returns {RecipesList}
    */
   getRecipesListToDisplay() {
-    return this._recipesList.search(this._userRequest);
+    return this._recipesList.search(
+      this._userRequest,
+      this._hashTableForSearchingRecipes
+    );
   }
 
   /**
@@ -339,10 +343,13 @@ export class HomePageBuilder {
 
         this._displaySearchResultMessage(recipesListToDisplay);
       } else if (this._badgesList.length > 0) {
-        recipesListToDisplay = this._recipesList.search({
-          userInput: "",
-          joinedBadges: this._userRequest.joinedBadges,
-        });
+        recipesListToDisplay = this._recipesList.search(
+          {
+            userInput: "",
+            joinedBadges: this._userRequest.joinedBadges,
+          },
+          this._hashTableForSearchingRecipes
+        );
 
         this._displaySearchResultMessage(recipesListToDisplay);
       } else {
@@ -383,7 +390,9 @@ export class HomePageBuilder {
         itemsListsToDisplay[filter] = itemsListsToDisplay[
           filter
         ].filter((item) =>
-          removeAccents(item).startsWith(removeAccents(filterInput.value))
+          keepOnlyLettersAndRemoveAccents(item).startsWith(
+            keepOnlyLettersAndRemoveAccents(filterInput.value)
+          )
         );
 
         this._renderFiltersOptions(itemsListsToDisplay);
