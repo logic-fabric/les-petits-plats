@@ -188,8 +188,6 @@ export class RecipesList {
 
     userRequest = `${userRequest.userInput} ${userRequest.joinedBadges}`;
 
-    let filteredRecipes = new Set(this.recipes);
-
     const words = userRequest.split(" ");
     const keywords = removeStopWords(words);
 
