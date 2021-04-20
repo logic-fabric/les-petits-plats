@@ -1,6 +1,6 @@
 <mxfile>
     <diagram id="Pm9djMvFo91G5wfqixfO" name="Page-1">
-        <mxGraphModel dx="1507" dy="868" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#FFFFFF" math="0" shadow="0">
+        <mxGraphModel dx="1015" dy="580" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#FFFFFF" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -31,13 +31,13 @@
                 <mxCell id="10" value="&lt;span style=&quot;font-size: 14px&quot;&gt;ajouter la recette à l'ensemble &lt;b&gt;&lt;font face=&quot;Courier New&quot;&gt;keywordRecipes&lt;/font&gt;&lt;/b&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c4dcff;fontColor=#032250;strokeColor=#032250;strokeWidth=2;spacing=10;" parent="1" vertex="1">
                     <mxGeometry x="726" y="1070" width="200" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="11" value="&lt;span style=&quot;font-size: 14px&quot;&gt;remplacer l'ensemble &lt;b&gt;&lt;font face=&quot;Courier New&quot;&gt;filteredRecipes&lt;/font&gt;&lt;/b&gt; par son intersection avec &lt;font face=&quot;Courier New&quot;&gt;&lt;b&gt;keywordRecipes&lt;/b&gt;&lt;/font&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c4dcff;fontColor=#032250;strokeColor=#032250;strokeWidth=2;spacing=10;" parent="1" vertex="1">
+                <mxCell id="11" value="&lt;span style=&quot;font-size: 14px&quot;&gt;on remplace l'ensemble &lt;b&gt;&lt;font face=&quot;Courier New&quot;&gt;filteredRecipes&lt;/font&gt;&lt;/b&gt; par son intersection avec &lt;font face=&quot;Courier New&quot;&gt;&lt;b&gt;keywordRecipes&lt;/b&gt;&lt;/font&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c4dcff;fontColor=#032250;strokeColor=#032250;strokeWidth=2;spacing=10;" parent="1" vertex="1">
                     <mxGeometry x="390" y="840" width="200" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="12" value="&lt;span style=&quot;font-size: 14px&quot;&gt;les recettes correspondant à la recherche utilisateur sont celles restant dans &lt;b&gt;&lt;font face=&quot;Courier New&quot;&gt;filteredRecipes&lt;/font&gt;&lt;/b&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c4dcff;fontColor=#032250;strokeColor=#032250;strokeWidth=2;spacing=10;" parent="1" vertex="1">
                     <mxGeometry x="70" y="1161" width="280" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="16" value="&lt;font style=&quot;font-size: 35px&quot;&gt;&lt;b&gt;Algorithme 1 :&lt;/b&gt; &lt;i&gt;parcours de toutes les recettes en base&lt;/i&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#032250;" parent="1" vertex="1">
+                <mxCell id="16" value="&lt;font style=&quot;font-size: 36px&quot;&gt;&lt;b&gt;Algorithme 1 :&lt;/b&gt; &lt;i&gt;parcours de toutes les recettes en base&lt;/i&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#032250;" parent="1" vertex="1">
                     <mxGeometry x="70" y="80" width="550" height="120" as="geometry"/>
                 </mxCell>
                 <mxCell id="17" value="" style="endArrow=classicThin;html=1;fontColor=#032250;strokeColor=#032250;strokeWidth=2;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="8" target="9" edge="1">
@@ -141,7 +141,7 @@
                 <mxCell id="32" value="&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;Non&lt;br&gt;&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#032250;" parent="1" vertex="1">
                     <mxGeometry x="1032.5" y="900" width="40" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="33" value="&lt;span style=&quot;font-size: 14px&quot;&gt;Pour accroître les chances de répondre au souhait de utilisateur, le filtrage s'effectuera sur des mots dont tous les accents ont été retirés, aussi bien dans la requête utilisateur que dans les items des recettes.&lt;/span&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;strokeWidth=2;fillColor=#fed8b2;strokeColor=#4d2a07;fontColor=#4d2a07;spacing=10;" parent="1" vertex="1">
+                <mxCell id="33" value="&lt;span style=&quot;font-size: 14px&quot;&gt;Pour accroître les chances de répondre au souhait de utilisateur, le filtrage s'effectuera sur des mots dont tous les accents ont été retirés, aussi bien dans la requête utilisateur que dans les items des recettes.&lt;/span&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;strokeWidth=2;fillColor=#fed8b2;strokeColor=#4d2a07;fontColor=#4d2a07;spacing=10;align=left;" parent="1" vertex="1">
                     <mxGeometry x="650" y="540" width="413" height="100" as="geometry"/>
                 </mxCell>
                 <mxCell id="34" value="" style="endArrow=classicThin;html=1;fontColor=#032250;strokeColor=#032250;strokeWidth=2;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" parent="1" source="10" target="8" edge="1">
