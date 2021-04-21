@@ -382,7 +382,7 @@ export class HomePageBuilder {
       const itemsLines = document.querySelectorAll(`#${filter}-list li`);
 
       filterInput.oninput = () => {
-        console.log(`User input for ${filter} >`, filterInput.value);
+        //console.log(`User input for ${filter} >`, filterInput.value);
 
         let itemsListsToDisplay = {};
         Object.assign(itemsListsToDisplay, this._filtersItems);
