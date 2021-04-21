@@ -185,7 +185,7 @@ export class RecipesList {
    * @returns {RecipesList}
    */
   search(userRequest, hashTableForSearchingRecipes) {
-    console.log("Search recipes for", userRequest);
+    //console.log("Search recipes for", userRequest);
 
     userRequest = `${userRequest.userInput} ${userRequest.joinedBadges}`;
 
