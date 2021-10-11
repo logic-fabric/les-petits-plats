@@ -4,6 +4,7 @@ export const RECIPES = [
   {
     id: 1,
     name: "Limonade de Coco",
+    cover: "limonade-coco.jpeg",
     servings: 1,
     ingredients: [
       {
@@ -38,6 +39,8 @@ export const RECIPES = [
   {
     id: 2,
     name: "Poisson cru à la tahitienne",
+    cover: "poisson-cru-tahitienne.jpeg",
+    altText: "Un bol de thon cru à la tahitienne",
     servings: 2,
     ingredients: [
       {
@@ -76,6 +79,8 @@ export const RECIPES = [
   {
     id: 3,
     name: "Poulet coco réunionnais",
+    cover: "poulet-coco-reunionnais.jpeg",
+    altText: "Une assiette de poulet coco réunionnais",
     servings: 4,
     ingredients: [
       {
@@ -113,6 +118,8 @@ export const RECIPES = [
   {
     id: 4,
     name: "Salade de riz",
+    cover: "salade-riz.jpeg",
+    altText: "Une assiette de salade de riz",
     servings: 4,
     ingredients: [
       {
@@ -153,6 +160,8 @@ export const RECIPES = [
   {
     id: 5,
     name: "Tarte au thon",
+    cover: "tarte-thon.jpeg",
+    altText: "Une part fraîchement coupée de tarte au thon",
     servings: 4,
     ingredients: [
       {
@@ -193,6 +202,8 @@ export const RECIPES = [
   {
     id: 6,
     name: "Tarte aux pommes",
+    cover: "tarte-pommes.jpeg",
+    altText: "Une tarte aux pommes saupoudrée de sucre glace",
     servings: 6,
     ingredients: [
       {
@@ -232,6 +243,8 @@ export const RECIPES = [
   {
     id: 7,
     name: "Tartelettes au chocolat et aux fraises",
+    cover: "tartelettes-chocolat-fraises.jpeg",
+    altText: "Quatre tartelettes au chocolat et aux fraises prêtes à servir",
     servings: 6,
     ingredients: [
       {
@@ -267,6 +280,8 @@ export const RECIPES = [
   {
     id: 8,
     name: "Brownie",
+    cover: "brownies.jpeg",
+    altText: "Quelques brownies au noix",
     servings: 10,
     ingredients: [
       {
@@ -307,7 +322,9 @@ export const RECIPES = [
   },
   {
     id: 9,
-    name: "Salade Méditerannéene fraîche au chèvre",
+    name: "Salade méditerannéene fraîche au chèvre",
+    cover: "salade-mediteranneene-fraiche-chevre.jpeg",
+    altText: "Une assiette de salade méditerannéene au chèvre",
     servings: 4,
     ingredients: [
       {
@@ -341,6 +358,8 @@ export const RECIPES = [
   {
     id: 10,
     name: "Tartiflette",
+    cover: "tartiflette.jpeg",
+    altText: "Un poêlon de tartiflette",
     servings: 4,
     ingredients: [
       {
@@ -376,7 +395,9 @@ export const RECIPES = [
   },
   {
     id: 11,
-    name: "Salade tomate, mozzarella et pommes",
+    name: "Salade tomates, mozzarella et pommes",
+    cover: "salade-tomates-mozzarella-pommes.jpeg",
+    altText: "Une assiette de salade tomates, mozzarella et pommes",
     servings: 4,
     ingredients: [
       {
@@ -417,6 +438,8 @@ export const RECIPES = [
   {
     id: 12,
     name: "Compote pomme rhubarbe",
+    cover: "compote-pomme-rhubarbe.jpeg",
+    altText: "Une bolée de compote pomme rhubarbe",
     servings: 4,
     ingredients: [
       {
@@ -448,6 +471,8 @@ export const RECIPES = [
   {
     id: 13,
     name: "Salade mâchée de patates",
+    cover: "salade-machee-patates.jpeg",
+    altText: "Un bol de salade mâchée de patates",
     servings: 2,
     ingredients: [
       {
@@ -484,6 +509,9 @@ export const RECIPES = [
   {
     id: 14,
     name: "Galette bretonne saucisse et fromage à raclette",
+    cover: "galette-bretonne-saucisse-fromage-raclette.jpeg",
+    altText:
+      "Une galettes saucisse et fromage à raclette attendant d'être dégustée",
     servings: 2,
     ingredients: [
       {
@@ -523,6 +551,8 @@ export const RECIPES = [
   {
     id: 15,
     name: "Crêpes chocolat banane",
+    cover: "crepes-chocolat-banane.jpeg",
+    altText: "Deux crêpes chocolat banane prêtes à être dégustées",
     servings: 10,
     ingredients: [
       {
@@ -563,6 +593,8 @@ export const RECIPES = [
   {
     id: 16,
     name: "Gratin de pâtes à la tomate",
+    cover: "gratin-pates-tomate.jpeg",
+    altText: "Deux poëlons de gratin de pâtes à la tomate",
     servings: 2,
     ingredients: [
       {
@@ -600,6 +632,8 @@ export const RECIPES = [
   {
     id: 17,
     name: "Smoothie à la fraise",
+    cover: "smoothie-fraise.jpeg",
+    altText: "Un verre de smoothie à la fraise",
     servings: 6,
     ingredients: [
       {
@@ -633,6 +667,8 @@ export const RECIPES = [
   {
     id: 18,
     name: "Smoothie ananas et vanille",
+    cover: "smoothie-ananas-vanille.jpeg",
+    altText: "Deux verres de smoothie ananas-vanille servis avec une paille",
     servings: 5,
     ingredients: [
       {
@@ -659,6 +695,8 @@ export const RECIPES = [
   {
     id: 19,
     name: "Milkshake banane kiwi",
+    cover: "milkshake-banane-kiwi.jpeg",
+    altText: "Deux milkshakes banane-kiwi servis avec des pailles",
     servings: 4,
     ingredients: [
       {
@@ -693,6 +731,8 @@ export const RECIPES = [
   {
     id: 20,
     name: "Pâtes carbonara",
+    cover: "pates-carbonara.jpeg",
+    altText: "Une assiette de tagliatelles à la carbonara",
     servings: 5,
     ingredients: [
       {
@@ -730,6 +770,8 @@ export const RECIPES = [
   {
     id: 21,
     name: "Spaghettis à la bolognaise",
+    cover: "spaghettis-bolognaise.jpeg",
+    altText: "Une assiette de spaghettis à la bolognaise, avec un peu de parmesan",
     servings: 4,
     ingredients: [
       {
@@ -771,6 +813,8 @@ export const RECIPES = [
   {
     id: 22,
     name: "Fondant au chocolat",
+    cover: "fondant-chocolat.jpeg",
+    altText: "Un fondant au chocolat en forme de coeur",
     servings: 4,
     ingredients: [
       {
@@ -807,6 +851,8 @@ export const RECIPES = [
   {
     id: 23,
     name: "Quiche lorraine",
+    cover: "quiche-lorraine.jpeg",
+    altText: "Une quiche lorraine tout juste sortie du four",
     servings: 4,
     ingredients: [
       {
@@ -848,6 +894,8 @@ export const RECIPES = [
   {
     id: 24,
     name: "Salade de pâtes",
+    cover: "salade-pates.jpeg",
+    altText: "Une salade de pâtes servies dans un bol",
     servings: 4,
     ingredients: [
       {
@@ -888,6 +936,8 @@ export const RECIPES = [
   {
     id: 25,
     name: "Cookies",
+    cover: "cookies.jpeg",
+    altText: "Une assiette pleine de cookies aux pépites de chocolat",
     servings: 4,
     ingredients: [
       {
@@ -924,6 +974,8 @@ export const RECIPES = [
   {
     id: 26,
     name: "Soupe de tomates",
+    cover: "soupe-tomates.jpeg",
+    altText: "Une assiette de soupe de tomates prête à être dégustée",
     servings: 2,
     ingredients: [
       {
@@ -956,6 +1008,8 @@ export const RECIPES = [
   {
     id: 27,
     name: "Soupe à l'oseille",
+    cover: "soupe-oseille.jpeg",
+    altText: "Une assiette de soupe à l'oseille, avec un peu de crème fraîche",
     servings: 4,
     ingredients: [
       {
@@ -991,6 +1045,8 @@ export const RECIPES = [
   {
     id: 28,
     name: "Soupe de poireaux",
+    cover: "soupe-poireaux.jpeg",
+    altText: "Un bol de soupe de poireaux",
     servings: 4,
     ingredients: [
       {
@@ -1027,6 +1083,8 @@ export const RECIPES = [
   {
     id: 29,
     name: "Houmous express",
+    cover: "houmous-express.jpeg",
+    altText: "Un petit bol de houmous maison",
     servings: 2,
     ingredients: [
       {
@@ -1059,6 +1117,8 @@ export const RECIPES = [
   {
     id: 30,
     name: "Purée de pois cassés",
+    cover: "puree-pois-casses.jpeg",
+    altText: "Une belle assiette de purée de pois cassés",
     servings: 4,
     ingredients: [
       {
@@ -1085,6 +1145,8 @@ export const RECIPES = [
   {
     id: 31,
     name: "Jardinière de légumes",
+    cover: "jardiniere-legumes.jpeg",
+    altText: "Une assiette remplie d'une belle jardinière de légumes",
     servings: 4,
     ingredients: [
       {
@@ -1120,6 +1182,8 @@ export const RECIPES = [
   {
     id: 32,
     name: "Croque-monsieur à la dinde",
+    cover: "croque-monsieur-dinde.jpeg",
+    altText: "Un croque-monsieur à la dinde doré, partagé en deux",
     servings: 4,
     ingredients: [
       {
@@ -1162,6 +1226,8 @@ export const RECIPES = [
   {
     id: 33,
     name: "Sandwich au saumon fumé",
+    cover: "sandwich-saumon-fume.jpeg",
+    altText: "Un appétissant sandwich au saumon fumé",
     servings: 4,
     ingredients: [
       {
@@ -1198,6 +1264,8 @@ export const RECIPES = [
   {
     id: 34,
     name: "Purée de patates douces",
+    cover: "puree-patates-douces.jpeg",
+    altText: "Un poêlon rempli de purée de patates douces",
     servings: 4,
     ingredients: [
       {
@@ -1227,6 +1295,8 @@ export const RECIPES = [
   {
     id: 35,
     name: "Purée de carottes",
+    cover: "puree-carottes.jpeg",
+    altText: "Un bol rempli de purée de carottes",
     servings: 2,
     ingredients: [
       {
@@ -1267,6 +1337,8 @@ export const RECIPES = [
   {
     id: 36,
     name: "Lasagnes courgettes et chèvre",
+    cover: "lasagne-courgettes-chevre.jpeg",
+    altText: "Des lasagnes courgettes et chèvre servies sur une assiette",
     servings: 2,
     ingredients: [
       {
@@ -1307,6 +1379,8 @@ export const RECIPES = [
   {
     id: 37,
     name: "Courgettes farcies au boeuf",
+    cover: "courgettes-farcies-boeuf.jpeg",
+    altText: "Deux moitiés de courgettes farcies bien gratinées",
     servings: 2,
     ingredients: [
       {
@@ -1347,6 +1421,8 @@ export const RECIPES = [
   {
     id: 38,
     name: "Pain perdu",
+    cover: "pain-perdu.jpeg",
+    altText: "Deux tranches de pain perdu recouvertes de beurre fondu",
     servings: 4,
     ingredients: [
       {
@@ -1378,6 +1454,8 @@ export const RECIPES = [
   {
     id: 39,
     name: "Crumble aux pommes",
+    cover: "crumble-pommes.jpeg",
+    altText: "Un crumble aux pommes servi dans un ramequin",
     servings: 40,
     ingredients: [
       {
@@ -1409,6 +1487,8 @@ export const RECIPES = [
   {
     id: 40,
     name: "Limonade",
+    cover: "limonade.jpeg",
+    altText: "Un verre de limonade bien fraîche",
     servings: 4,
     ingredients: [
       {
@@ -1440,6 +1520,8 @@ export const RECIPES = [
   {
     id: 41,
     name: "Mousse au chocolat",
+    cover: "mousse-chocolat.jpeg",
+    altText: "Deux mousses au chocolat servies dans des pots en verre",
     servings: 4,
     ingredients: [
       {
@@ -1465,7 +1547,9 @@ export const RECIPES = [
   },
   {
     id: 42,
-    name: "Charlotte au poires",
+    name: "Charlotte aux poires",
+    cover: "charlotte-poires.jpeg",
+    altText: "Une charlotte aux poires et au chocolat sur un plat",
     servings: 3,
     ingredients: [
       {
@@ -1496,6 +1580,8 @@ export const RECIPES = [
   {
     id: 43,
     name: "Tarte au citron",
+    cover: "tarte-citron.jpeg",
+    altText: "Une part de tarte au citron sur une petite assiette à dessert",
     servings: 6,
     ingredients: [
       {
@@ -1530,6 +1616,8 @@ export const RECIPES = [
   {
     id: 44,
     name: "Crème dessert au chocolat",
+    cover: "creme-dessert-chocolat.jpeg",
+    altText: "De la crème au chocolat servie dans une coupe à dessert",
     servings: 6,
     ingredients: [
       {
@@ -1567,6 +1655,8 @@ export const RECIPES = [
   {
     id: 45,
     name: "Crème pâtissière",
+    cover: "creme-patissiere.jpeg",
+    altText: "Un bol de crème patissière",
     servings: 8,
     ingredients: [
       {
@@ -1598,6 +1688,8 @@ export const RECIPES = [
   {
     id: 46,
     name: "Far breton",
+    cover: "far-breton.jpeg",
+    altText: "Une part de far breton tout juste découpée",
     servings: 6,
     ingredients: [
       {
@@ -1639,6 +1731,8 @@ export const RECIPES = [
   {
     id: 47,
     name: "Mousse au citron",
+    cover: "mousse-citron.jpeg",
+    altText: "Une mousse au citron servie dans un ramequin",
     servings: 6,
     ingredients: [
       {
@@ -1671,6 +1765,8 @@ export const RECIPES = [
   {
     id: 48,
     name: "Pizza",
+    cover: "pizza.jpeg",
+    altText: "Une belle pizza aux champignons",
     servings: 4,
     ingredients: [
       {
@@ -1707,6 +1803,8 @@ export const RECIPES = [
   {
     id: 49,
     name: "Smoothie tropical",
+    cover: "smoothie-tropical.jpeg",
+    altText: "Deux verres de smoothie tropical",
     servings: 4,
     ingredients: [
       {
@@ -1741,6 +1839,8 @@ export const RECIPES = [
   {
     id: 50,
     name: "Galette des Rois",
+    cover: "galette-rois.jpeg",
+    altText: "Une galette des Rois et sa couronne",
     servings: 2,
     ingredients: [
       {

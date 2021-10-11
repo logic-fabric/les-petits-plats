@@ -3,11 +3,13 @@
    =========== */
 
 .c-card {
-  border-radius: $grid-sm;
+  border-radius: $grid-1;
+  box-shadow: $grid-xs $grid-sm $grid-1 $neutral-200;
   overflow: hidden;
 
   margin: 0 0 $grid-6 0;
 
+  background: $neutral-100;
   opacity: 0;
 }
 
@@ -32,9 +34,17 @@
 }
 
 .c-card__img {
-  height: 11 * $grid-2;
+  height: 14 * $grid-2;
+  padding: $grid-3 $grid-3 0 $grid-3;
+  overflow: hidden;
 
-  background: $neutral-400;
+  text-align: center;
+
+  img {
+    width: 100%;
+
+    object-fit: cover;
+  }
 }
 
 .c-card__body {
@@ -43,8 +53,6 @@
   height: 14 * $grid-2;
   padding: $grid-2 $grid-3;
   overflow: hidden;
-
-  background: $neutral-200;
 
   .c-card__title {
     display: flex;
@@ -95,7 +103,7 @@
 
     width: 100%;
 
-    background: $neutral-200;
+    background: $neutral-100;
 
     content: "";
   }

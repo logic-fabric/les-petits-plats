@@ -23,6 +23,8 @@ export class DataFetcher {
         new Recipe(
           recipe.id,
           recipe.name,
+          recipe.cover,
+          recipe.altText,
           recipe.servings,
           recipe.ingredients,
           recipe.time,

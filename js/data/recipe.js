@@ -12,6 +12,8 @@ export class Recipe {
    * @constructs
    * @param {number} id
    * @param {string} name
+   * @param {string} cover
+   * @param {string} altText
    * @param {number} servings
    * @param {Array.Object} ingredients
    * @param {number} time
@@ -22,6 +24,8 @@ export class Recipe {
   constructor(
     id,
     name,
+    cover,
+    altText,
     servings,
     ingredients,
     time,
@@ -31,6 +35,8 @@ export class Recipe {
   ) {
     this.id = id;
     this.name = name;
+    this.cover = cover;
+    this.altText = altText;
     this.servings = servings;
     this.ingredients = ingredients;
     this.time = time;
