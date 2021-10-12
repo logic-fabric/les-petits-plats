@@ -1051,8 +1051,8 @@ ul {
 }
 .c-badge i {
   margin-left: 0.5rem;
-  cursor: pointer;
   transition: color 200ms;
+  cursor: pointer;
 }
 .c-badge--ingredient {
   background: #3282f7;
@@ -1632,9 +1632,9 @@ ul {
   font-size: 2.5rem;
   text-align: right;
   background: #ed8e2e;
+  cursor: pointer;
   transform: translateY(5rem);
   transition: background-color 250ms, transform 300ms;
-  cursor: pointer;
 }
 #up-button i {
   display: block;

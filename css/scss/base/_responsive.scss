@@ -2,123 +2,123 @@
    RESPONSIVE FLEXBOX GRID
    ======================= */
 
-   $cols: 12;
+$cols: 12;
 
-   $grid-gutters: (
-     "": $grid-1,
-     "-lg": $grid-2,
-     "-xl": $grid-3,
-   );
-   
-   $iefix: 0.01px;
-   
-   [class*="row-"],
-   [class¨="row-"] {
-     display: flex;
-     flex-direction: row;
-     flex-wrap: wrap;
-   
-     & > * {
-       box-sizing: border-box;
-       min-width: 0;
-       min-height: 0;
-     }
-   }
-   
-   @mixin flex-row($nb-cols: 1) {
-     & > * {
-       width: calc(100% / #{$nb-cols} - #{$iefix});
-     }
-   
-     @each $suffix, $size in $grid-gutters {
-       &.has-gutter#{$suffix} {
-         margin-right: -$size / 2;
-         margin-left: -$size / 2;
-   
-         & > * {
-           width: calc(100% / #{$nb-cols} - #{$size} - #{$iefix});
-           margin-right: $size / 2;
-           margin-left: $size / 2;
-         }
-       }
-     }
-   
-     // LARGE SCREENS
-     @media (min-width: $medium-breakpoint) {
-       @for $i from 1 through $nb-cols {
-         & > .lg#{$i} {
-           width: calc((100% / #{$nb-cols}) * #{$i} - #{$iefix});
-         }
-   
-         & > .offset-lg#{$i} {
-           margin-left: calc((100% / #{$nb-cols}) * #{$i} - #{$iefix});
-         }
-   
-         @each $suffix, $size in $grid-gutters {
-           &.has-gutter#{$suffix} > .lg#{$i} {
-             width: calc((100% / #{$nb-cols}) * #{$i} - #{$size} - #{$iefix});
-           }
-   
-           &.has-gutter#{$suffix} > .offset-lg#{$i} {
-             margin-left: calc(
-               (100% / #{$nb-cols}) * #{$i} + #{$size} / 2 - #{$iefix}
-             );
-           }
-         }
-       }
-     }
-   
-     // MEDIUM SCREENS
-     @media (min-width: $small-breakpoint) and (max-width: $medium-breakpoint - 1) {
-       @for $i from 1 through $nb-cols {
-         & > .md#{$i} {
-           width: calc((100% / #{$nb-cols}) * #{$i} - #{$iefix});
-         }
-   
-         & > .offset-md#{$i} {
-           margin-left: calc((100% / #{$nb-cols}) * #{$i} - #{$iefix});
-         }
-   
-         @each $suffix, $size in $grid-gutters {
-           &.has-gutter#{$suffix} > .md#{$i} {
-             width: calc((100% / #{$nb-cols}) * #{$i} - #{$size} - #{$iefix});
-           }
-   
-           &.has-gutter#{$suffix} > .offset-md#{$i} {
-             margin-left: calc(
-               (100% / #{$nb-cols}) * #{$i} + #{$size} / 2 - #{$iefix}
-             );
-           }
-         }
-       }
-     }
-   
-     // SMALL SCREENS
-     @media (max-width: $small-breakpoint - 1) {
-       @for $i from 1 through $nb-cols {
-         & > .sm#{$i} {
-           width: calc((100% / #{$nb-cols}) * #{$i} - #{$iefix});
-         }
-   
-         & > .offset-sm#{$i} {
-           margin-left: calc((100% / #{$nb-cols}) * #{$i} - #{$iefix});
-         }
-   
-         @each $suffix, $size in $grid-gutters {
-           &.has-gutter#{$suffix} > .sm#{$i} {
-             width: calc((100% / #{$nb-cols}) * #{$i} - #{$size} - #{$iefix});
-           }
-   
-           &.has-gutter#{$suffix} > .offset-sm#{$i} {
-             margin-left: calc(
-               (100% / #{$nb-cols}) * #{$i} + #{$size} / 2 - #{$iefix}
-             );
-           }
-         }
-       }
-     }
-   }
-   
-   .row-#{$cols} {
-     @include flex-row($cols);
-   }
+$grid-gutters: (
+  "": $grid-1,
+  "-lg": $grid-2,
+  "-xl": $grid-3,
+);
+
+$iefix: 0.01px;
+
+[class*="row-"],
+[class¨="row-"] {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  & > * {
+    box-sizing: border-box;
+    min-width: 0;
+    min-height: 0;
+  }
+}
+
+@mixin flex-row($nb-cols: 1) {
+  & > * {
+    width: calc(100% / #{$nb-cols} - #{$iefix});
+  }
+
+  @each $suffix, $size in $grid-gutters {
+    &.has-gutter#{$suffix} {
+      margin-right: -$size / 2;
+      margin-left: -$size / 2;
+
+      & > * {
+        width: calc(100% / #{$nb-cols} - #{$size} - #{$iefix});
+        margin-right: $size / 2;
+        margin-left: $size / 2;
+      }
+    }
+  }
+
+  // LARGE SCREENS
+  @media (min-width: $medium-breakpoint) {
+    @for $i from 1 through $nb-cols {
+      & > .lg#{$i} {
+        width: calc((100% / #{$nb-cols}) * #{$i} - #{$iefix});
+      }
+
+      & > .offset-lg#{$i} {
+        margin-left: calc((100% / #{$nb-cols}) * #{$i} - #{$iefix});
+      }
+
+      @each $suffix, $size in $grid-gutters {
+        &.has-gutter#{$suffix} > .lg#{$i} {
+          width: calc((100% / #{$nb-cols}) * #{$i} - #{$size} - #{$iefix});
+        }
+
+        &.has-gutter#{$suffix} > .offset-lg#{$i} {
+          margin-left: calc(
+            (100% / #{$nb-cols}) * #{$i} + #{$size} / 2 - #{$iefix}
+          );
+        }
+      }
+    }
+  }
+
+  // MEDIUM SCREENS
+  @media (min-width: $small-breakpoint) and (max-width: $medium-breakpoint - 1) {
+    @for $i from 1 through $nb-cols {
+      & > .md#{$i} {
+        width: calc((100% / #{$nb-cols}) * #{$i} - #{$iefix});
+      }
+
+      & > .offset-md#{$i} {
+        margin-left: calc((100% / #{$nb-cols}) * #{$i} - #{$iefix});
+      }
+
+      @each $suffix, $size in $grid-gutters {
+        &.has-gutter#{$suffix} > .md#{$i} {
+          width: calc((100% / #{$nb-cols}) * #{$i} - #{$size} - #{$iefix});
+        }
+
+        &.has-gutter#{$suffix} > .offset-md#{$i} {
+          margin-left: calc(
+            (100% / #{$nb-cols}) * #{$i} + #{$size} / 2 - #{$iefix}
+          );
+        }
+      }
+    }
+  }
+
+  // SMALL SCREENS
+  @media (max-width: $small-breakpoint - 1) {
+    @for $i from 1 through $nb-cols {
+      & > .sm#{$i} {
+        width: calc((100% / #{$nb-cols}) * #{$i} - #{$iefix});
+      }
+
+      & > .offset-sm#{$i} {
+        margin-left: calc((100% / #{$nb-cols}) * #{$i} - #{$iefix});
+      }
+
+      @each $suffix, $size in $grid-gutters {
+        &.has-gutter#{$suffix} > .sm#{$i} {
+          width: calc((100% / #{$nb-cols}) * #{$i} - #{$size} - #{$iefix});
+        }
+
+        &.has-gutter#{$suffix} > .offset-sm#{$i} {
+          margin-left: calc(
+            (100% / #{$nb-cols}) * #{$i} + #{$size} / 2 - #{$iefix}
+          );
+        }
+      }
+    }
+  }
+}
+
+.row-#{$cols} {
+  @include flex-row($cols);
+}

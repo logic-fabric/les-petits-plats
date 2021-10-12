@@ -15,9 +15,8 @@
   i {
     margin-left: $grid-1;
 
-    cursor: pointer;
-
     transition: color 200ms;
+    cursor: pointer;
   }
 
   &--ingredient {

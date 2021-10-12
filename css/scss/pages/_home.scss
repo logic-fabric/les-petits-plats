@@ -74,7 +74,6 @@ $filters-transition-duration: 150ms;
       border-radius: $grid-sm;
 
       cursor: pointer;
-
       transition: width $filters-transition-duration;
 
       input {
@@ -284,10 +283,9 @@ $filters-transition-duration: 150ms;
   text-align: right;
 
   background: $warning-500;
+  cursor: pointer;
   transform: translateY(5rem);
   transition: background-color 250ms, transform 300ms;
-
-  cursor: pointer;
 
   i {
     display: block;
