@@ -12,7 +12,7 @@ const recipesList = dataFetcher.getRecipesList();
 const HASH_TABLE_FOR_SEARCHING_RECIPES =
   buildHashTableForSearchingRecipes(recipesList);
 
-console.log(HASH_TABLE_FOR_SEARCHING_RECIPES);
+//console.log(HASH_TABLE_FOR_SEARCHING_RECIPES);
 
 new HomePageBuilder(recipesList, HASH_TABLE_FOR_SEARCHING_RECIPES).render();
 
@@ -51,7 +51,7 @@ function measureAlgorithmPerformance() {
 
   const testDuration = testEnding - testStarting;
 
-  console.log(
+  /* console.log(
     `${2 * TESTS_QUANTITY} recherches réalisées en ${testDuration} ms`
-  );
+  ); */
 }
