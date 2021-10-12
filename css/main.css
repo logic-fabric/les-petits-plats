@@ -1007,7 +1007,7 @@ header,
 main {
   max-width: 480px;
   margin: auto;
-  padding: 0 1rem;
+  padding: 0 0.5rem;
 }
 @media (min-width: 840px) {
   footer,
@@ -1026,6 +1026,10 @@ main {
     margin: auto;
     padding: 0 2rem;
   }
+}
+
+header {
+  padding: 1.5rem 0 0 0;
 }
 
 ul {
@@ -1072,6 +1076,19 @@ ul {
 /* ===========
    RECIPE CARD
    =========== */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+  25% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .c-card {
   border-radius: 0.5rem;
   box-shadow: 0.125rem 0.25rem 0.5rem #e7e7e7;
@@ -1281,34 +1298,22 @@ ul {
   animation: fade-in 500ms ease-out 2450ms forwards;
 }
 
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-    transform: translateY(-1rem);
-  }
-  25% {
-    opacity: 0.7;
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 .c-card__img {
   height: 14rem;
-  padding: 1.5rem 1.5rem 0 1.5rem;
+  padding: 1rem 1rem 0 1rem;
   overflow: hidden;
   text-align: center;
 }
 .c-card__img img {
   width: 100%;
+  border-radius: 0.25rem 0.25rem 0 0;
   object-fit: cover;
 }
 
 .c-card__body {
   position: relative;
   height: 14rem;
-  padding: 1rem 1.5rem;
+  padding: 1rem;
   overflow: hidden;
 }
 .c-card__body .c-card__title {
@@ -1357,6 +1362,15 @@ ul {
   height: 1.5rem;
 }
 
+@media (min-width: 840px) {
+  .c-card__img {
+    padding: 1.5rem 1.5rem 0 1.5rem;
+  }
+
+  .c-card__body {
+    padding: 1rem 1.5rem;
+  }
+}
 /* ======================
    SEARCH RESULT MESSAGES
    ====================== */
@@ -1397,14 +1411,14 @@ ul {
   display: flex;
   border-radius: 0.25rem;
   overflow: hidden;
-  background: #e7e7e7;
+  background: #f6f6f6;
 }
 .p-search-bar input {
   width: calc(100% - 5rem);
   padding: 0 0 0 1rem;
   border: none;
   outline: none;
-  background: #e7e7e7;
+  background: #f6f6f6;
 }
 .p-search-bar input::placeholder {
   color: #a79c9c;
@@ -1418,7 +1432,7 @@ ul {
   padding: 1.2rem 1rem;
   border: none;
   font-size: 1.5rem;
-  background: #e7e7e7;
+  background: #f6f6f6;
 }
 
 .p-badges-wrapper,
